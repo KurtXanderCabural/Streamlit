@@ -9,6 +9,8 @@ st.write("""
 Hello! I'm Kurt Xander Cabural, a passionate web designer and front-end developer currently in my 4th year of studying Information Technology at Cebu Institute of Technology University. My expertise lies in creating visually appealing and user-friendly web interfaces using technologies such as HTML, CSS, JavaScript, and React JS. I'm dedicated to continuous learning and always eager to take on new challenges that allow me to grow as a developer and designer.
 """)
 
+<i class="fi fi-brands-instagram"></i>
+
 # Portfolio section
 st.header("Portfolio")
 
