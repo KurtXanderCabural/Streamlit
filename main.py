@@ -69,5 +69,11 @@ def web_portfolio():
     </div>
     """, unsafe_allow_html=True)
 
+    # Set the title
+    st.write(f"""
+             <div class=
+             "subtitle" style="text-align: center;">Front-end Developer and Web Designer</div>""",
+              unsafe_allow_html=True)
+
 if __name__ == "__main__":
     web_portfolio()
