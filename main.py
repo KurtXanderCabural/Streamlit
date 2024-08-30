@@ -30,20 +30,20 @@ def web_portfolio():
         }}
     }}
 
-    @keyframes rotate {{
-        0% {{
+    @keyframes slowTilt {{
+        0%, 100% {{
             transform: rotate(0deg);
         }}
-        100% {{
-            transform: rotate(360deg);
+        50% {{
+            transform: rotate(5deg);
         }}
     }}
     
-    .animated-img {{
-        width: 200px;
-        height: auto;
+    .box img {{
+        width: 300px;
+        height: 200px;
         border-radius: 50%;
-        animation: rotate 5s linear infinite;
+        animation: slowTilt 2s ease-in-out infinite;
     }}
     </style>
     <div class="title" style="text-align: center;">
@@ -59,8 +59,10 @@ def web_portfolio():
 
     # Display the image with center alignment and animation
     st.write(f"""
-    <div style="text-align: center;">
-        <img src="{image_url}" alt="Kurt Xander Cabural" class="animated-img">
+    <div style="display: flex; justify-content: center;">
+        <div class="box">
+            <img src="{image_url}" alt="Kurt Xander Cabural">
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
