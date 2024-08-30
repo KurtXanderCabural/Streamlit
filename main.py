@@ -235,5 +235,33 @@ def web_portfolio():
     """
     )
 
+    # --- Projects and Accomplishment ---
+    st.write('\n')
+    st.subheader("Projects and Accomplishment")
+    st.write("---")
+
+    # --- Project 1
+    st.write("🗂️", "**CampusEats - Capstone**")
+    st.write("August 2024 - Cebu Institute of Techonology University")
+    st.write(
+    """
+    💡 Developed and implemented the user interface using React JS and CSS, creating a responsive and user-friendly experience.
+    💡 Utilized Figma to design intuitive and visually appealing user interfaces, ensuring a cohesive and attractive design.
+    💡 Collaborated with backend developers to integrate front-end features with the Java-based backend.
+    💡 Designed and optimized web pages to ensure seamless navigation and fast loading times.
+    """
+    )
+
+     # --- Project 2
+    st.write("🗂️", "**Focusify - Systems Integration and Architecture **")
+    st.write("May 2024 - Cebu Institute of Techonology University")
+    st.write(
+    """
+    💡 Designed and developed web interfaces using HTML, CSS, and JavaScript.
+    💡 Utilized Figma for creating intuitive and visually appealing designs.
+    💡 Collaborated with the team for seamless system integration.
+    💡 Ensured responsive and optimized performance across devices.
+    """
+    )
 if __name__ == "__main__":
     web_portfolio()
