@@ -1,4 +1,104 @@
 import streamlit as st
+import rx  # Ensure you have the rx library installed for this example
+
+def sidebar_item(text: str, icon: str, href: str) -> rx.Component:
+    return rx.link(
+        rx.hstack(
+            rx.icon(icon, size="24px"),  # Adjust icon size
+            rx.text(text, size="4", weight="bold"),
+            width="100%",
+            padding_x="0.75rem",
+            padding_y="0.5rem",
+            align="center",
+            style={
+                "_hover": {
+                    "bg": rx.color("blue.500"),
+                    "color": rx.color("white"),
+                },
+                "border-radius": "0.5em",
+                "transition": "background-color 0.3s ease, color 0.3s ease",  # Smooth hover transition
+            },
+        ),
+        href=href,
+        underline="none",
+        weight="medium",
+        width="100%",
+    )
+
+
+def sidebar_items() -> rx.Component:
+    return rx.vstack(
+        sidebar_item("Contact", "phone", "/#"),
+        sidebar_item("Skills", "star", "/#"),
+        sidebar_item("Resume", "file-text", "/#"),
+        spacing="1",
+        width="100%",
+    )
+
+
+def sidebar() -> rx.Component:
+    return rx.box(
+        rx.desktop_only(
+            rx.vstack(
+                rx.hstack(
+                    rx.image(
+                        src="/logo.jpg",
+                        width="2.5em",  # Slightly larger logo
+                        height="auto",
+                        border_radius="50%",  # Circular logo
+                    ),
+                    rx.heading(
+                        "My Portfolio", size="6", weight="bold", color="blue.700"
+                    ),
+                    align="center",
+                    justify="start",
+                    padding_x="1rem",  # Increased padding
+                    width="100%",
+                ),
+                sidebar_items(),
+                spacing="4",  # Increased spacing between items
+                padding_x="1.5em",
+                padding_y="2em",
+                bg=rx.color("gray.100"),  # Light background color
+                align="start",
+                height="100vh",  # Full height sidebar
+                width="18em",  # Slightly wider sidebar
+            ),
+        ),
+        rx.mobile_and_tablet(
+            rx.drawer.root(
+                rx.drawer.trigger(
+                    rx.icon("menu", size=30, color="blue.500")  # Change menu icon color
+                ),
+                rx.drawer.overlay(z_index="5"),
+                rx.drawer.portal(
+                    rx.drawer.content(
+                        rx.vstack(
+                            rx.box(
+                                rx.drawer.close(
+                                    rx.icon("close", size=30, color="blue.500")  # Change close icon color
+                                ),
+                                width="100%",
+                            ),
+                            sidebar_items(),
+                            spacing="4",  # Increased spacing
+                            width="100%",
+                        ),
+                        top="auto",
+                        right="auto",
+                        height="100%",
+                        width="20em",
+                        padding="2em",
+                        bg=rx.color("gray.100"),  # Light background color
+                    ),
+                    width="100%",
+                ),
+                direction="left",
+            ),
+            padding="1em",
+        ),
+    )
+
 
 def web_portfolio():
     # Page configurations
@@ -12,27 +112,55 @@ def web_portfolio():
     if "show_resume" not in st.session_state:
         st.session_state["show_resume"] = False
 
-    # Sidebar Contact Button
-    if st.sidebar.button('Contact'):
-        st.session_state["show_contact"] = not st.session_state["show_contact"]
-        st.session_state["show_skills"] = False  # Hide skills when contact is toggled
-        st.session_state["show_resume"] = False  # Hide resume when contact is toggled
+    # Streamlit sidebar layout with the updated design
+    st.sidebar.title("Navigation")
+    sidebar_html = """
+    <div style="
+        background-color: #F0F0F0;
+        padding: 1em;
+        border-radius: 0.5em;
+        width: 100%;
+        height: 100vh;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    ">
+        <div style="text-align: center; margin-bottom: 1em;">
+            <img src="/logo.jpg" style="width: 80px; height: 80px; border-radius: 50%;" />
+            <h2 style="color: #1E3A8A;">My Portfolio</h2>
+        </div>
+        <a href="#contact" style="
+            display: block;
+            padding: 0.5em;
+            text-decoration: none;
+            color: #1E3A8A;
+            border-radius: 0.5em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-bottom: 0.5em;
+        ">Contact</a>
+        <a href="#skills" style="
+            display: block;
+            padding: 0.5em;
+            text-decoration: none;
+            color: #1E3A8A;
+            border-radius: 0.5em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-bottom: 0.5em;
+        ">Skills</a>
+        <a href="#resume" style="
+            display: block;
+            padding: 0.5em;
+            text-decoration: none;
+            color: #1E3A8A;
+            border-radius: 0.5em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-bottom: 0.5em;
+        ">Resume</a>
+    </div>
+    """
+    st.sidebar.markdown(sidebar_html, unsafe_allow_html=True)
 
-    # Sidebar Skills Button
-    if st.sidebar.button('Skills'):
-        st.session_state["show_skills"] = not st.session_state["show_skills"]
-        st.session_state["show_contact"] = False  # Hide contact info when skills are toggled
-        st.session_state["show_resume"] = False  # Hide resume when skills are toggled
-
-    # Sidebar Resume Button
-    if st.sidebar.button('Resume'):
-        st.session_state["show_resume"] = not st.session_state["show_resume"]
-        st.session_state["show_contact"] = False  # Hide contact info when resume is toggled
-        st.session_state["show_skills"] = False  # Hide skills when resume is toggled
-
-    # Display or hide contact information based on the session state
+    # Main content display
     if st.session_state["show_contact"]:
-        st.sidebar.write("""
+        st.write("""
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <img src="https://cdn-icons-png.flaticon.com/128/6424/6424087.png" 
             style="width: 25px; height: 25px; margin-right: 10px;" alt="Gmail Icon">
@@ -54,7 +182,6 @@ def web_portfolio():
     elif not st.session_state["show_skills"] and not st.session_state["show_resume"]:
         st.sidebar.write("")  # Ensures nothing is shown when the info is hidden
 
-    # Display or hide skills based on the session state
     if st.session_state["show_skills"]:
         st.sidebar.write("""
         <style>
@@ -86,35 +213,21 @@ def web_portfolio():
             <ul class="skills-list">
                 <li><img src="https://cdn-icons-png.flaticon.com/128/732/732212.png" class="moving-icon" alt="HTML Icon">HTML</li>
                 <li><img src="https://cdn-icons-png.flaticon.com/128/919/919827.png" class="moving-icon" alt="React JS Icon">React JS</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919830.png" class="moving-icon" alt="React TS Icon">React TS</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/871/871210.png" class="moving-icon" alt="Figma Icon">Figma Design</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919827.png" class="moving-icon" alt="React TS Icon">React TS</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/190/190411.png" class="moving-icon" alt="Figma Icon">Figma Design</li>
                 <li><img src="https://cdn-icons-png.flaticon.com/128/226/226777.png" class="moving-icon" alt="Java Icon">Java Programming</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919831.png" class="moving-icon" alt="CSS Icon">CSS Web Development</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/5968/5968242.png" class="moving-icon" alt="JavaScript Icon">JavaScript Web Development</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/2620/2620675.png" class="moving-icon" alt="MySQL Icon">MySQL Database</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/2922/2922501.png" class="moving-icon" alt="Team Collaboration Icon">Team Collaboration</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/226/226777.png" class="moving-icon" alt="CSS Icon">CSS Web Development</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919826.png" class="moving-icon" alt="JavaScript Icon">JavaScript Web Development</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/2111/2111372.png" class="moving-icon" alt="MySQL Icon">MySQL Database</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/2461/2461701.png" class="moving-icon" alt="Team Collaboration Icon">Team Collaboration</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
 
-    # Display or hide resume based on the session state
     if st.session_state["show_resume"]:
-        # Replace 'your-resume-url' with the actual URL to your resume file
-        resume_url = "https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing"
         st.sidebar.write("""
-        <style>
-        .resume-container {
-            margin-top: 20px;
-        }
-
-        .resume-link {
-            display: inline-block;
-            margin-right: 15px;
-        }
-        </style>
-        <div class="resume-container">
-            <a class="resume-link" href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" target="_blank" style="font-size: 16px; text-decoration: none; color: #1f77b4;">View Resume</a>
-        </div>
+        <h3>Resume</h3>
+        <a href="https://example.com/resume.pdf" target="_blank">Download Resume</a>
         """, unsafe_allow_html=True)
 
     # Page title with waving hand emoji animation
