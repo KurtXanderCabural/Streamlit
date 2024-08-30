@@ -4,18 +4,23 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-    # Initialize session state for toggling contact information
+    # Initialize session state for toggling contact information and skills
     if "show_contact" not in st.session_state:
         st.session_state["show_contact"] = False
-    if "sidebar_opened" not in st.session_state:
-        st.session_state["sidebar_opened"] = False
+    if "show_skills" not in st.session_state:
+        st.session_state["show_skills"] = False
 
     # Sidebar Contact Button
     if st.sidebar.button('Contact'):
         st.session_state["show_contact"] = not st.session_state["show_contact"]
-        st.session_state["sidebar_opened"] = True
+        st.session_state["show_skills"] = False  # Hide skills when contact is toggled
 
-    # Hide contact information when the sidebar is first opened or the "Contact" button is not clicked
+    # Sidebar Skills Button
+    if st.sidebar.button('Skills'):
+        st.session_state["show_skills"] = not st.session_state["show_skills"]
+        st.session_state["show_contact"] = False  # Hide contact info when skills are toggled
+
+    # Display or hide contact information based on the session state
     if st.session_state["show_contact"]:
         st.sidebar.write("""
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
@@ -36,11 +41,27 @@ def web_portfolio():
             target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
         </div>
         """, unsafe_allow_html=True)
-    elif not st.session_state["sidebar_opened"]:
+    elif not st.session_state["show_skills"]:
         st.sidebar.write("")  # Ensures nothing is shown when the info is hidden
 
-    # Reset sidebar open state
-    st.session_state["sidebar_opened"] = False
+    # Display or hide skills based on the session state
+    if st.session_state["show_skills"]:
+        st.sidebar.write("""
+        <div style="margin-bottom: 20px;">
+            <h3>Skills</h3>
+            <ul>
+                <li>HTML</li>
+                <li>React JS</li>
+                <li>React TS</li>
+                <li>Figma Design</li>
+                <li>Java Programming</li>
+                <li>CSS Web Development</li>
+                <li>JavaScript Web Development</li>
+                <li>MySQL Database</li>
+                <li>Team Collaboration</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
 
     # Page title with waving hand emoji animation
     st.write("""
