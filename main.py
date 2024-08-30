@@ -3,7 +3,8 @@ import streamlit as st
 def web_portfolio():
     # Page configs
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
-    
+
+    text = st.sidebar.text_area("Input Text")
     # Set the page title with waving hand emoji animation
     st.write(f"""
     <style>
