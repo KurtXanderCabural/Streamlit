@@ -47,7 +47,7 @@ def web_portfolio():
     
     .box img {{
         animation: slowTilt 2s ease-in-out infinite;
-        max-width: 100%;  /* Ensures image doesn't exceed container width */
+        max-width: 40%;  /* Ensures image doesn't exceed container width */
         height: auto;     /* Maintains aspect ratio */
     }}
     </style>
