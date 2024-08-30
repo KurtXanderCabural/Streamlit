@@ -32,6 +32,16 @@ def web_portfolio():
             target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
         </div>
         """, unsafe_allow_html=True)
+
+    # Add Facebook icon with clickable link to Facebook profile
+        st.sidebar.write(f"""
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <img src="https://cdn-icons-png.flaticon.com/128/6422/6422199.png" 
+            style="width: 25px; height: 25px; margin-right: 10px;" alt="Facebook Icon">
+            <a href="https://www.facebook.com/Cabural.Kurt.Xander.M" 
+            target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
+        </div>
+        """, unsafe_allow_html=True)
         
     else:
         st.sidebar.write("")  # This ensures nothing is shown when the info is hidden
