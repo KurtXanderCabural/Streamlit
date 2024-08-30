@@ -27,7 +27,7 @@ def web_portfolio():
         st.sidebar.write(f"""
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
-            style="width: 25px; height: 25px; margin-right: 13px;" alt="LinkedIn Icon">
+            style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
             <a href="https://www.linkedin.com/in/kurt-xander-cabural-129132310/" 
             target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
         </div>
