@@ -4,6 +4,13 @@ def web_portfolio():
     # Page configs
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
     
+    # Create sidebar with navigation options
+    st.sidebar.title("Navigation")
+    st.sidebar.write("[Home](#)")
+    st.sidebar.write("[About Me](#about-me)")
+    st.sidebar.write("[Portfolio](#portfolio)")
+    st.sidebar.write("[Contact](#contact)")
+
     # Set the page title with waving hand emoji animation
     st.write(f"""
     <style>
@@ -71,30 +78,10 @@ def web_portfolio():
 
     # Set the title
     st.write(f"""
-             <div class=
-             "subtitle" style="text-align: center;">Front-end Developer and Web Designer</div>""",
+             <div class="subtitle" style="text-align: center;">Front-end Developer and Web Designer</div>""",
               unsafe_allow_html=True)
 
     # Add Social Icons
     social_icons_data = {
-    "Figma": ["https://www.figma.com/files/team/1239597512271544315/all-projects?fuid=1239597507354790543", "https://cdn-icons-png.flaticon.com/128/6423/6423305.png"],
-    "LinkedIn": ["https://www.linkedin.com/in/kurt-xander-cabural-129132310/", "https://cdn-icons-png.flaticon.com/128/6422/6422202.png"],
-    "GitHub": ["https://github.com/KurtXanderCabural", "https://cdn-icons-png.flaticon.com/128/5968/5968866.png"],
-    "Facebook": ["https://www.facebook.com/Cabural.Kurt.Xander.M", "https://cdn-icons-png.flaticon.com/128/6422/6422199.png"],
-    "Discord": ["https://discord.com/channels/@me", "https://cdn-icons-png.flaticon.com/128/6422/6422197.png"]
-    }
-
-    social_icons_html = [
-    f"<a href='{social_icons_data[platform][0]}' target='_blank' style='margin-right: 10px;'>"
-    f"<img class='social-icon' src='{social_icons_data[platform][1]}' alt='{platform}'"
-    f" style='width: 25px; height: 25px;'></a>"
-    for platform in social_icons_data
-]
-    st.write(f"""
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-    {''.join(social_icons_html)}
-    </div>""", 
-    unsafe_allow_html=True)
-
-if __name__ == "__main__":
-    web_portfolio()
+        "Figma": ["https://www.figma.com/files/team/1239597512271544315/all-projects?fuid=1239597507354790543", "https://cdn-icons-png.flaticon.com/128/6423/6423305.png"],
+        "LinkedIn": ["https://www.linkedin.com/in/kurt-xander-cabural-129132310/", "https://cdn-ico
