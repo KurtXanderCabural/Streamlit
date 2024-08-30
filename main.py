@@ -66,6 +66,10 @@ def web_portfolio():
             list-style-type: none;
             padding: 0;
         }
+
+        .skills-list li {
+            margin-bottom: 15px; /* Line spacing for skills list items */
+        }
         </style>
         <div style="margin-bottom: 20px;">
             <h3>Skills</h3>
