@@ -1,5 +1,3 @@
-add sidebar on this code:
-
 import streamlit as st
 
 def web_portfolio():
