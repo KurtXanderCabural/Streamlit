@@ -36,7 +36,3 @@ st.write("""
 - **LinkedIn:** [linkedin.com/in/kurtxander](#)
 """)
 
-
-can i use this :
-
-from base64 import b64encode
