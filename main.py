@@ -17,8 +17,8 @@ def web_portfolio():
         # Add Facebook icon with clickable email that opens Gmail
         st.sidebar.write(f"""
         <div style="display: flex; align-items: center;">
-            <img src="https://cdn-icons-png.flaticon.com/128/6422/6422199.png" 
-            style="width: 25px; height: 25px; margin-right: 10px;" alt="Facebook Icon">
+            <img src="https://cdn-icons-png.flaticon.com/128/6424/6424087.png" 
+            style="width: 25px; height: 25px; margin-right: 10px;" alt="Gmail Icon">
             <a href="mailto:kurtxander1@gmail.com" style="text-decoration: none; color: inherit;">kurtxander1@gmail.com</a>
         </div>
         """, unsafe_allow_html=True)
