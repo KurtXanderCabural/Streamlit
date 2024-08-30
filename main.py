@@ -4,21 +4,31 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-    # Initialize session state for toggling contact information and skills
+    # Initialize session state for toggling contact information, skills, and resume
     if "show_contact" not in st.session_state:
         st.session_state["show_contact"] = False
     if "show_skills" not in st.session_state:
         st.session_state["show_skills"] = False
+    if "show_resume" not in st.session_state:
+        st.session_state["show_resume"] = False
 
     # Sidebar Contact Button
     if st.sidebar.button('Contact'):
         st.session_state["show_contact"] = not st.session_state["show_contact"]
         st.session_state["show_skills"] = False  # Hide skills when contact is toggled
+        st.session_state["show_resume"] = False  # Hide resume when contact is toggled
 
     # Sidebar Skills Button
     if st.sidebar.button('Skills'):
         st.session_state["show_skills"] = not st.session_state["show_skills"]
         st.session_state["show_contact"] = False  # Hide contact info when skills are toggled
+        st.session_state["show_resume"] = False  # Hide resume when skills are toggled
+
+    # Sidebar Resume Button
+    if st.sidebar.button('Resume'):
+        st.session_state["show_resume"] = not st.session_state["show_resume"]
+        st.session_state["show_contact"] = False  # Hide contact info when resume is toggled
+        st.session_state["show_skills"] = False  # Hide skills when resume is toggled
 
     # Display or hide contact information based on the session state
     if st.session_state["show_contact"]:
@@ -41,7 +51,7 @@ def web_portfolio():
             target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
         </div>
         """, unsafe_allow_html=True)
-    elif not st.session_state["show_skills"]:
+    elif not st.session_state["show_skills"] and not st.session_state["show_resume"]:
         st.sidebar.write("")  # Ensures nothing is shown when the info is hidden
 
     # Display or hide skills based on the session state
@@ -87,6 +97,27 @@ def web_portfolio():
         </div>
         """, unsafe_allow_html=True)
 
+    # Display or hide resume based on the session state
+    if st.session_state["show_resume"]:
+        # Replace 'your-resume-url' with the actual URL to your resume file
+        resume_url = "https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing"
+        st.sidebar.write("""
+        <style>
+        .resume-container {
+            margin-top: 20px;
+        }
+
+        .resume-link {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        </style>
+        <div class="resume-container">
+            <a class="resume-link" href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" target="_blank" style="font-size: 16px; text-decoration: none; color: #1f77b4;">View Resume</a>
+            <a class="resume-link" href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" download="Kurt_Xander_Cabural_Resume.pdf" style="font-size: 16px; text-decoration: none; color: #1f77b4;">Download Resume</a>
+        </div>
+        """, unsafe_allow_html=True)
+
     # Page title with waving hand emoji animation
     st.write("""
     <style>
@@ -128,19 +159,22 @@ def web_portfolio():
 
     st.markdown('<style>div.block-container{padding-top:3rem;}</style>', unsafe_allow_html=True)
 
-    # Display profile image with center alignment and animation
+    # Use the raw GitHub URL for the profile image
     image_url = "https://raw.githubusercontent.com/KurtXanderCabural/Streamlit/main/kx.png"
+
+    # Display the image with center alignment and animation
     st.write(f"""
     <div class="box">
         <img src="{image_url}" alt="Kurt Xander Cabural">
     </div>
     """, unsafe_allow_html=True)
 
-    # Title and social icons
+    # Set the title
     st.write("""
     <div class="subtitle" style="text-align: center;">Front-end Developer and Web Designer</div>
     """, unsafe_allow_html=True)
 
+    # Social Icons
     social_icons_data = {
         "Figma": ["https://www.figma.com/files/team/1239597512271544315/all-projects?fuid=1239597507354790543", "https://cdn-icons-png.flaticon.com/128/6423/6423305.png"],
         "LinkedIn": ["https://www.linkedin.com/in/kurt-xander-cabural-129132310/", "https://cdn-icons-png.flaticon.com/128/6422/6422202.png"],
