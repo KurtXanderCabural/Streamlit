@@ -4,7 +4,13 @@ def web_portfolio():
     # Page configs
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
+    # Sidebar Text Area for input
     text = st.sidebar.text_area("Input Text")
+    
+    # Sidebar Contact Button
+    if st.sidebar.button('Contact'):
+        st.sidebar.write("You can reach me at kurtxander.cabural@example.com")  # Replace with your actual contact info
+        
     # Set the page title with waving hand emoji animation
     st.write(f"""
     <style>
