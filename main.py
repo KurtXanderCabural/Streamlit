@@ -1,40 +1,35 @@
 import streamlit as st
 
 def web_portfolio():
-    # Page configs
+    # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-  # Initialize session state for toggling contact information
+    # Initialize session state for toggling contact and skills information
     if "show_contact" not in st.session_state:
         st.session_state["show_contact"] = False
+    if "show_skills" not in st.session_state:
+        st.session_state["show_skills"] = False
     
-    # Sidebar Contact Button
+    # Sidebar Contact and Skills Buttons
     if st.sidebar.button('Contact'):
         st.session_state["show_contact"] = not st.session_state["show_contact"]
+    if st.sidebar.button('Skills'):
+        st.session_state["show_skills"] = not st.session_state["show_skills"]
 
     # Display or hide contact information based on the session state
     if st.session_state["show_contact"]:
-        # Add Facebook icon with clickable email that opens Gmail
-        st.sidebar.write(f"""
+        st.sidebar.write("""
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <img src="https://cdn-icons-png.flaticon.com/128/6424/6424087.png" 
             style="width: 25px; height: 25px; margin-right: 10px;" alt="Gmail Icon">
             <a href="mailto:kurtxander1@gmail.com" style="text-decoration: none; color: inherit;">kurtxander1@gmail.com</a>
         </div>
-        """, unsafe_allow_html=True)
-
-    # Add LinkedIn icon with clickable link to LinkedIn profile
-        st.sidebar.write(f"""
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
             style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
             <a href="https://www.linkedin.com/in/kurt-xander-cabural-129132310/" 
             target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
         </div>
-        """, unsafe_allow_html=True)
-
-    # Add Facebook icon with clickable link to Facebook profile
-        st.sidebar.write(f"""
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <img src="https://cdn-icons-png.flaticon.com/128/6422/6422199.png" 
             style="width: 25px; height: 25px; margin-right: 10px;" alt="Facebook Icon">
@@ -42,127 +37,108 @@ def web_portfolio():
             target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
         </div>
         """, unsafe_allow_html=True)
-
-    with st.container():
-    st.subheader('⚒️ Skills')
-    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
-    with col1:
-        st_lottie(python_lottie, height=70,width=70, key="python", speed=2.5)
-    with col2:
-        st_lottie(java_lottie, height=70,width=70, key="java", speed=4)
-    with col3:
-        st_lottie(my_sql_lottie,height=70,width=70, key="mysql", speed=2.5)
-    with col4:
-        st_lottie(git_lottie,height=70,width=70, key="git", speed=2.5)
-    with col1:
-        st_lottie(github_lottie,height=50,width=50, key="github", speed=2.5)
-    with col2:
-        st_lottie(docker_lottie,height=70,width=70, key="docker", speed=2.5)
-    with col3:
-        st_lottie(figma_lottie,height=50,width=50, key="figma", speed=2.5)
-    with col4:
-        st_lottie(js_lottie,height=50,width=50, key="js", speed=1)
-        
     else:
-        st.sidebar.write("")  # This ensures nothing is shown when the info is hidden
-        
-    # Set the page title with waving hand emoji animation
-    st.write(f"""
+        st.sidebar.write("")  # Ensures nothing is shown when the info is hidden
+
+    # Display or hide skills information based on the session state
+    if st.session_state["show_skills"]:
+        st.sidebar.write("""
+        <div style="margin-bottom: 20px;">
+            <h3>Skills</h3>
+            <ul>
+                <li>HTML</li>
+                <li>React JS</li>
+                <li>React TS</li>
+                <li>Figma Design</li>
+                <li>Java Programming</li>
+                <li>CSS Web Development</li>
+                <li>JavaScript Web Development</li>
+                <li>MySQL Database</li>
+                <li>Team Collaboration</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.sidebar.write("")  # Ensures nothing is shown when the info is hidden
+
+    # Page title with waving hand emoji animation
+    st.write("""
     <style>
-    .waving-hand {{
+    .waving-hand {
         display: inline-block;
         animation: wave 1s linear infinite;
-    }}
+    }
     
-    @keyframes wave {{
-        0% {{
-            transform: rotate(0deg);
-        }}
-        25% {{
-            transform: rotate(15deg);
-        }}
-        50% {{
-            transform: rotate(0deg);
-        }}
-        75% {{
-            transform: rotate(-15deg);
-        }}
-        100% {{
-            transform: rotate(0deg);
-        }}
-    }}
+    @keyframes wave {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(15deg); }
+        50% { transform: rotate(0deg); }
+        75% { transform: rotate(-15deg); }
+        100% { transform: rotate(0deg); }
+    }
 
-    @keyframes slowTilt {{
-        0%, 100% {{
-            transform: rotate(0deg);
-        }}
-        50% {{
-            transform: rotate(5deg);
-        }}
-    }}
+    @keyframes slowTilt {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(5deg); }
+    }
     
-    .box {{
+    .box {
         display: flex;
         justify-content: center;
         align-items: center;
-    }}
+    }
     
-    .box img {{
+    .box img {
         animation: slowTilt 2s ease-in-out infinite;
-        max-width: 40%;  /* Ensures image doesn't exceed container width */
-        height: auto;     /* Maintains aspect ratio */
-    }}
+        max-width: 40%;
+        height: auto;
+    }
     </style>
     <div class="title" style="text-align: center;">
-    <span style='font-size: 32px;'>Hello! My name is Kurt Xander Cabural</span>
-    <span class="waving-hand">👋</span>
+        <span style='font-size: 32px;'>Hello! My name is Kurt Xander Cabural</span>
+        <span class="waving-hand">👋</span>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown('<style>div.block-container{padding-top:3rem;}</style>', unsafe_allow_html=True)
 
-    # Use the raw GitHub URL for the profile image
+    # Display profile image with center alignment and animation
     image_url = "https://raw.githubusercontent.com/KurtXanderCabural/Streamlit/main/kx.png"
-
-    # Display the image with center alignment and animation
     st.write(f"""
     <div class="box">
         <img src="{image_url}" alt="Kurt Xander Cabural">
     </div>
     """, unsafe_allow_html=True)
 
-    # Set the title
-    st.write(f"""
-             <div class=
-             "subtitle" style="text-align: center;">Front-end Developer and Web Designer</div>""",
-              unsafe_allow_html=True)
+    # Title and social icons
+    st.write("""
+    <div class="subtitle" style="text-align: center;">Front-end Developer and Web Designer</div>
+    """, unsafe_allow_html=True)
 
-    # Add Social Icons
     social_icons_data = {
-    "Figma": ["https://www.figma.com/files/team/1239597512271544315/all-projects?fuid=1239597507354790543", "https://cdn-icons-png.flaticon.com/128/6423/6423305.png"],
-    "LinkedIn": ["https://www.linkedin.com/in/kurt-xander-cabural-129132310/", "https://cdn-icons-png.flaticon.com/128/6422/6422202.png"],
-    "GitHub": ["https://github.com/KurtXanderCabural", "https://cdn-icons-png.flaticon.com/128/5968/5968866.png"],
-    "Facebook": ["https://www.facebook.com/Cabural.Kurt.Xander.M", "https://cdn-icons-png.flaticon.com/128/6422/6422199.png"],
-    "Discord": ["https://discord.com/channels/@me", "https://cdn-icons-png.flaticon.com/128/6422/6422197.png"]
+        "Figma": ["https://www.figma.com/files/team/1239597512271544315/all-projects?fuid=1239597507354790543", "https://cdn-icons-png.flaticon.com/128/6423/6423305.png"],
+        "LinkedIn": ["https://www.linkedin.com/in/kurt-xander-cabural-129132310/", "https://cdn-icons-png.flaticon.com/128/6422/6422202.png"],
+        "GitHub": ["https://github.com/KurtXanderCabural", "https://cdn-icons-png.flaticon.com/128/5968/5968866.png"],
+        "Facebook": ["https://www.facebook.com/Cabural.Kurt.Xander.M", "https://cdn-icons-png.flaticon.com/128/6422/6422199.png"],
+        "Discord": ["https://discord.com/channels/@me", "https://cdn-icons-png.flaticon.com/128/6422/6422197.png"]
     }
 
     social_icons_html = [
-    f"<a href='{social_icons_data[platform][0]}' target='_blank' style='margin-right: 10px;'>"
-    f"<img class='social-icon' src='{social_icons_data[platform][1]}' alt='{platform}'"
-    f" style='width: 25px; height: 25px;'></a>"
-    for platform in social_icons_data
-]
+        f"<a href='{social_icons_data[platform][0]}' target='_blank' style='margin-right: 10px;'>"
+        f"<img class='social-icon' src='{social_icons_data[platform][1]}' alt='{platform}'"
+        f" style='width: 25px; height: 25px;'></a>"
+        for platform in social_icons_data
+    ]
     st.write(f"""
     <div style="display: flex; justify-content: center; margin-bottom: 20px;">
     {''.join(social_icons_html)}
-    </div>""", 
-    unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
     st.write("##")
 
     # About Me Section
     st.subheader("About Me")
-
     st.markdown("""
     I am a 4th-year IT student with a strong passion for technology and collaborative projects. 
     Throughout my academic journey, I have consistently worked with my classmates on various projects, 
@@ -171,6 +147,6 @@ def web_portfolio():
     My ability to work effectively in a team, combined with my technical expertise and design skills, positions me well to contribute to innovative 
     and impactful projects. I am dedicated to continuous learning and excited to bring my skills and enthusiasm to new challenges in the IT field.
     """)
-    
+
 if __name__ == "__main__":
     web_portfolio()
