@@ -47,36 +47,18 @@ def web_portfolio():
     # Display or hide skills based on the session state
     if st.session_state["show_skills"]:
         st.sidebar.write("""
-        <style>
-        .moving-icon {
-            display: inline-block;
-            animation: move 2s ease-in-out infinite;
-            margin-right: 10px;
-        }
-
-        @keyframes move {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(10px); }
-            100% { transform: translateX(0); }
-        }
-
-        .skills-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        </style>
         <div style="margin-bottom: 20px;">
             <h3>Skills</h3>
-            <ul class="skills-list">
-                <li><img src="https://cdn-icons-png.flaticon.com/128/732/732212.png" class="moving-icon" alt="HTML Icon">HTML</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919827.png" class="moving-icon" alt="React JS Icon">React JS</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919830.png" class="moving-icon" alt="React TS Icon">React TS</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/871/871210.png" class="moving-icon" alt="Figma Icon">Figma Design</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/226/226777.png" class="moving-icon" alt="Java Icon">Java Programming</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919831.png" class="moving-icon" alt="CSS Icon">CSS Web Development</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/5968/5968242.png" class="moving-icon" alt="JavaScript Icon">JavaScript Web Development</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/2620/2620675.png" class="moving-icon" alt="MySQL Icon">MySQL Database</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/2922/2922501.png" class="moving-icon" alt="Team Collaboration Icon">Team Collaboration</li>
+            <ul>
+                <li>HTML</li>
+                <li>React JS</li>
+                <li>React TS</li>
+                <li>Figma Design</li>
+                <li>Java Programming</li>
+                <li>CSS Web Development</li>
+                <li>JavaScript Web Development</li>
+                <li>MySQL Database</li>
+                <li>Team Collaboration</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
