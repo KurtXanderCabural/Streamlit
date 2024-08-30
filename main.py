@@ -114,7 +114,6 @@ def web_portfolio():
         </style>
         <div class="resume-container">
             <a class="resume-link" href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" target="_blank" style="font-size: 16px; text-decoration: none; color: #1f77b4;">View Resume</a>
-            <a class="resume-link" href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" download="Kurt_Xander_Cabural_Resume.pdf" style="font-size: 16px; text-decoration: none; color: #1f77b4;">Download Resume</a>
         </div>
         """, unsafe_allow_html=True)
 
@@ -207,6 +206,31 @@ def web_portfolio():
     My ability to work effectively in a team, combined with my technical expertise and design skills, positions me well to contribute to innovative 
     and impactful projects. I am dedicated to continuous learning and excited to bring my skills and enthusiasm to new challenges in the IT field.
     """)
+
+    # --- Educational Attainment ---
+    st.write('\n')
+    st.subheader("Educational Attainment")
+    st.write("---")
+
+    # --- SCHOOL 1
+    st.write("📚", "**Cebu Institute of Technology University**")
+    st.write("Bachelor of Science in Information Technology | 2024 -2025")
+    st.write(
+    """
+    - ► Studying Project Management, Data Analytics, and Application Development with Emerging Technologies
+    """
+    )
+
+    # --- SCHOOL 2
+    st.write('\n')
+    st.write("📚", "**Cebu Institute of Technology University**")
+    st.write("Graduated STEM | 2018 - 2020")
+    st.write(
+    """
+    - ► Thesis involved with Science, Technology and Computational Mathematics
+    - ► GPA 4.1
+    """
+    )
 
 if __name__ == "__main__":
     web_portfolio()
