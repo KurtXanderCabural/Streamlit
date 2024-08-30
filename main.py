@@ -48,5 +48,30 @@ def web_portfolio():
     </div>
     """, unsafe_allow_html=True)
 
+    st.write(f"""
+    <style>
+    @keyframes slowTilt {{
+    0%, 100% {{
+    transform: rotate(0deg);
+    }}
+    50% {{
+    transform: rotate(5deg);
+    }}
+    }}
+    .box img {{
+    width: 300px;
+    height: 200px;
+    border-radius: 50%;
+    animation: slowTilt 2s ease-in-out infinite;
+    }}
+    </style>
+    <div style="display: flex; justify-content: center;">
+    <div class="box">
+    <img src="{img}">
+    </div>
+    </div>
+    """, 
+    unsafe_allow_html=True)
+
 if __name__ == "__main__":
     web_portfolio()
