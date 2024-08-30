@@ -254,7 +254,7 @@ def web_portfolio():
 
 
      # --- Project 2
-    st.write("🗂️", "**Focusify - Systems Integration and Architecture **")
+    st.write("🗂️", "**Focusify - Systems Integration and Architecture**")
     st.write("May 2024 - Cebu Institute of Techonology University")
     st.write(
     """
