@@ -14,8 +14,8 @@ def web_portfolio():
     """, unsafe_allow_html=True)
     st.markdown('<style>div.block-container{padding-top:3rem;}</style>', unsafe_allow_html=True)
 
-    # Define the path to the image file
-    img_path = os.path.join("C:", "Users", "kurt xander cabural", "Downloads", "kx.jpg")
+    # Define the correct path to the image file
+    img_path = "C:/Users/kurt xander cabural/Downloads/kx.jpg"
 
     # Check if the image file exists
     if os.path.exists(img_path):
