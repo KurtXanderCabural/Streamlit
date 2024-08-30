@@ -7,7 +7,7 @@ def web_portfolio():
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
     # Sidebar
-    st.sidebar.button("Home")
+    st.sidebar.write("[Home](#)")
     
     # Set the page title with waving hand emoji animation
     st.write(f"""
