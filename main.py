@@ -42,9 +42,6 @@ def web_portfolio():
             target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
         </div>
         """, unsafe_allow_html=True)
-        
-    else:
-        st.sidebar.write("")  # This ensures nothing is shown when the info is hidden
 
     with st.container():
     st.subheader('⚒️ Skills')
@@ -65,6 +62,9 @@ def web_portfolio():
         st_lottie(figma_lottie,height=50,width=50, key="figma", speed=2.5)
     with col4:
         st_lottie(js_lottie,height=50,width=50, key="js", speed=1)
+        
+    else:
+        st.sidebar.write("")  # This ensures nothing is shown when the info is hidden
         
     # Set the page title with waving hand emoji animation
     st.write(f"""
