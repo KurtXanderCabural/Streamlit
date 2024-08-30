@@ -24,7 +24,5 @@ def web_portfolio():
     <img src="{img}" alt="Kurt Xander Cabural" style="width:200px; height:auto;">
     """, unsafe_allow_html=True)
 
-    # Set the title of the app
-    st.title("Kurt Xander Cabural - Autobiography & Portfolio")
-
+ 
  
