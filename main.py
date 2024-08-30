@@ -4,12 +4,22 @@ def web_portfolio():
     # Page configs
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
+   # Initialize session state for toggling contact information
+    if "show_contact" not in st.session_state:
+        st.session_state["show_contact"] = False
+
     # Sidebar Text Area for input
     text = st.sidebar.text_area("Input Text")
     
     # Sidebar Contact Button
     if st.sidebar.button('Contact'):
+        st.session_state["show_contact"] = not st.session_state["show_contact"]
+
+    # Display or hide contact information based on the session state
+    if st.session_state["show_contact"]:
         st.sidebar.write("You can reach me at kurtxander.cabural@example.com")  # Replace with your actual contact info
+    else:
+        st.sidebar.write("")  # This ensures nothing is shown when the info is hidden
         
     # Set the page title with waving hand emoji animation
     st.write(f"""
