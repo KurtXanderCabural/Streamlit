@@ -96,5 +96,19 @@ def web_portfolio():
     </div>""", 
     unsafe_allow_html=True)
 
+    st.write("##")
+
+    # About Me Section
+    st.subheader("About Me")
+
+    st.markdown("""
+    I am a 4th-year IT student with a strong passion for technology and collaborative projects. 
+    Throughout my academic journey, I have consistently worked with my classmates on various projects, 
+    gaining hands-on experience and honing my skills in web development and design. I specialize in HTML, React JS, 
+    and React TS, and have a keen eye for design, utilizing Figma to create intuitive and visually appealing user interfaces. 
+    My ability to work effectively in a team, combined with my technical expertise and design skills, positions me well to contribute to innovative 
+    and impactful projects. I am dedicated to continuous learning and excited to bring my skills and enthusiasm to new challenges in the IT field.
+    """)
+    
 if __name__ == "__main__":
     web_portfolio()
