@@ -12,11 +12,23 @@ def web_portfolio():
     if st.sidebar.button('Contact'):
         st.session_state["show_contact"] = not st.session_state["show_contact"]
 
+   # Sidebar Contact Text (Clickable)
+    contact_text = "Hide Contact" if st.session_state["show_contact"] else "Show Contact"
+    if st.sidebar.markdown(f"[{contact_text}](#)", unsafe_allow_html=True):
+        st.session_state["show_contact"] = not st.session_state["show_contact"]
+
     # Display or hide contact information based on the session state
     if st.session_state["show_contact"]:
-        st.sidebar.write("You can reach me at kurtxander.cabural@example.com")  # Replace with your actual contact info
-    else:
-        st.sidebar.write("")  # This ensures nothing is shown when the info is hidden
+        st.sidebar.markdown(
+            f"""
+            <div style="display: flex; align-items: center;">
+                <span>You can reach me at kurtxander.cabural@example.com</span>
+                <img src="https://cdn-icons-png.flaticon.com/128/6424/6424087.png" 
+                alt="Email Icon" style="width: 25px; height: 25px; margin-left: 10px;">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
         
     # Set the page title with waving hand emoji animation
     st.write(f"""
