@@ -39,7 +39,7 @@ def web_portfolio():
     st.markdown('<style>div.block-container{padding-top:3rem;}</style>', unsafe_allow_html=True)
 
     # Use the raw GitHub URL for the profile image
-    image_url = "https://raw.githubusercontent.com/KurtXanderCabural/Streamlit/main/kx.jpg"
+    image_url = "https://raw.githubusercontent.com/KurtXanderCabural/Streamlit/main/kx.png"
 
     # Display the image in Streamlit with center alignment
     st.write(f"""
