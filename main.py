@@ -39,11 +39,16 @@ def web_portfolio():
         }}
     }}
     
+    .box {{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }}
+    
     .box img {{
-        width: 300px;
-        height: 200px;
-        border-radius: 50%;
         animation: slowTilt 2s ease-in-out infinite;
+        max-width: 100%;  /* Ensures image doesn't exceed container width */
+        height: auto;     /* Maintains aspect ratio */
     }}
     </style>
     <div class="title" style="text-align: center;">
@@ -59,10 +64,8 @@ def web_portfolio():
 
     # Display the image with center alignment and animation
     st.write(f"""
-    <div style="display: flex; justify-content: center;">
-        <div class="box">
-            <img src="{image_url}" alt="Kurt Xander Cabural">
-        </div>
+    <div class="box">
+        <img src="{image_url}" alt="Kurt Xander Cabural">
     </div>
     """, unsafe_allow_html=True)
 
