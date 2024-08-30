@@ -38,5 +38,13 @@ def web_portfolio():
     """, unsafe_allow_html=True)
     st.markdown('<style>div.block-container{padding-top:3rem;}</style>',unsafe_allow_html=True)
 
+    # Use the raw GitHub URL for the profile image
+    image_url = "https://raw.githubusercontent.com/KurtXanderCabural/Streamlit/main/kx.jpg"
+
+    # Display the image in Streamlit
+    st.write(f"""
+    <img src="{image_url}" alt="Kurt Xander Cabural" style="width:200px; height:auto;">
+    """, unsafe_allow_html=True)
+
 if __name__ == "__main__":
     web_portfolio()
