@@ -16,7 +16,7 @@ def web_portfolio():
     if st.session_state["show_contact"]:
         # Add Facebook icon with clickable email that opens Gmail
         st.sidebar.write(f"""
-        <div style="display: flex; align-items: center;">
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <img src="https://cdn-icons-png.flaticon.com/128/6424/6424087.png" 
             style="width: 25px; height: 25px; margin-right: 10px;" alt="Gmail Icon">
             <a href="mailto:kurtxander1@gmail.com" style="text-decoration: none; color: inherit;">kurtxander1@gmail.com</a>
@@ -25,9 +25,9 @@ def web_portfolio():
 
     # Add LinkedIn icon with clickable link to LinkedIn profile
         st.sidebar.write(f"""
-        <div style="display: flex; align-items: center;">
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
-            style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
+            style="width: 25px; height: 25px; margin-right: 9px;" alt="LinkedIn Icon">
             <a href="https://www.linkedin.com/in/kurt-xander-cabural-129132310/" 
             target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
         </div>
