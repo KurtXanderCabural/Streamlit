@@ -196,8 +196,11 @@ def web_portfolio():
 
     st.write("##")
 
-    # About Me Section
+    # --- About Me Section ---
+    st.write('\n')
     st.subheader("About Me")
+    st.write("---")
+
     st.markdown("""
     I am a 4th-year IT student with a strong passion for technology and collaborative projects. 
     Throughout my academic journey, I have consistently worked with my classmates on various projects, 
