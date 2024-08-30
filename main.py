@@ -36,6 +36,7 @@ def web_portfolio():
     <span class="waving-hand">👋</span>
     </div>
     """, unsafe_allow_html=True)
+    st.markdown('<style>div.block-container{padding-top:3rem;}</style>',unsafe_allow_html=True)
 
 if __name__ == "__main__":
     web_portfolio()
