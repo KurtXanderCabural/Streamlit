@@ -4,118 +4,107 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-    # Initialize session state for toggling contact information, skills, and resume
-    if "show_contact" not in st.session_state:
-        st.session_state["show_contact"] = False
-    if "show_skills" not in st.session_state:
-        st.session_state["show_skills"] = False
-    if "show_resume" not in st.session_state:
-        st.session_state["show_resume"] = False
+   # Custom CSS to replicate the sidebar design
+    st.markdown("""
+    <style>
+    /* Sidebar container */
+    .css-18e3th9 {
+        background-color: #2E1D43;
+        padding-top: 20px;
+    }
+    
+    /* Sidebar title */
+    .sidebar-title {
+        font-size: 24px;
+        color: #A899C0;
+        font-weight: bold;
+        padding: 10px;
+        text-align: left;
+        margin-bottom: 30px;
+        margin-left: 20px;
+    }
+    
+    /* Sidebar items */
+    .sidebar-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #A899C0;
+        text-decoration: none;
+        margin: 5px 0;
+    }
+    
+    .sidebar-item:hover {
+        background-color: #45275E;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    
+    /* Sidebar icons */
+    .sidebar-icon {
+        margin-right: 10px;
+    }
+    
+    /* User section */
+    .user-section {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        background-color: #2E1D43;
+        margin-top: 40px;
+        border-top: 1px solid #A899C0;
+    }
+    
+    .user-section img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .user-info {
+        font-size: 14px;
+        color: #A899C0;
+    }
+    
+    .user-info strong {
+        display: block;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-    # Sidebar Contact Button
-    if st.sidebar.button('Contact'):
-        st.session_state["show_contact"] = not st.session_state["show_contact"]
-        st.session_state["show_skills"] = False  # Hide skills when contact is toggled
-        st.session_state["show_resume"] = False  # Hide resume when contact is toggled
-
-    # Sidebar Skills Button
-    if st.sidebar.button('Skills'):
-        st.session_state["show_skills"] = not st.session_state["show_skills"]
-        st.session_state["show_contact"] = False  # Hide contact info when skills are toggled
-        st.session_state["show_resume"] = False  # Hide resume when skills are toggled
-
-    # Sidebar Resume Button
-    if st.sidebar.button('Resume'):
-        st.session_state["show_resume"] = not st.session_state["show_resume"]
-        st.session_state["show_contact"] = False  # Hide contact info when resume is toggled
-        st.session_state["show_skills"] = False  # Hide skills when resume is toggled
-
-    # Display or hide contact information based on the session state
-    if st.session_state["show_contact"]:
-        st.sidebar.write("""
-        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-            <img src="https://cdn-icons-png.flaticon.com/128/6424/6424087.png" 
-            style="width: 25px; height: 25px; margin-right: 10px;" alt="Gmail Icon">
-            <a href="mailto:kurtxander1@gmail.com" style="text-decoration: none; color: inherit;">kurtxander1@gmail.com</a>
-        </div>
-        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-            <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
-            style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
-            <a href="https://www.linkedin.com/in/kurt-xander-cabural-129132310/" 
-            target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
-        </div>
-        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-            <img src="https://cdn-icons-png.flaticon.com/128/6422/6422199.png" 
-            style="width: 25px; height: 25px; margin-right: 10px;" alt="Facebook Icon">
-            <a href="https://www.facebook.com/Cabural.Kurt.Xander.M" 
-            target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
-        </div>
-        """, unsafe_allow_html=True)
-    elif not st.session_state["show_skills"] and not st.session_state["show_resume"]:
-        st.sidebar.write("")  # Ensures nothing is shown when the info is hidden
-
-    # Display or hide skills based on the session state
-    if st.session_state["show_skills"]:
-        st.sidebar.write("""
-        <style>
-        .moving-icon {
-            display: inline-block;
-            animation: move 2s ease-in-out infinite;
-            width: 25px; /* Set the same size as contact icons */
-            height: 25px; /* Set the same size as contact icons */
-            margin-right: 10px;
-        }
-
-        @keyframes move {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(10px); }
-            100% { transform: translateX(0); }
-        }
-
-        .skills-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .skills-list li {
-            margin-bottom: 15px; /* Line spacing for skills list items */
-        }
-        </style>
-        <div style="margin-bottom: 20px;">
-            <h3>Skills</h3>
-            <ul class="skills-list">
-                <li><img src="https://cdn-icons-png.flaticon.com/128/732/732212.png" class="moving-icon" alt="HTML Icon">HTML</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919827.png" class="moving-icon" alt="React JS Icon">React JS</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919830.png" class="moving-icon" alt="React TS Icon">React TS</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/871/871210.png" class="moving-icon" alt="Figma Icon">Figma Design</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/226/226777.png" class="moving-icon" alt="Java Icon">Java Programming</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919831.png" class="moving-icon" alt="CSS Icon">CSS Web Development</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/5968/5968242.png" class="moving-icon" alt="JavaScript Icon">JavaScript Web Development</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/2620/2620675.png" class="moving-icon" alt="MySQL Icon">MySQL Database</li>
-                <li><img src="https://cdn-icons-png.flaticon.com/128/2922/2922501.png" class="moving-icon" alt="Team Collaboration Icon">Team Collaboration</li>
-            </ul>
+    # Sidebar Layout
+    st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
+    
+    # Sidebar Items
+    sidebar_items = [
+        ("🏠", "Dashboard"),
+        ("📄", "Projects"),
+        ("📊", "Analytics"),
+        ("📧", "Messages"),
+        ("⚙️", "Settings"),
+        ("↩️", "Log out")
+    ]
+    
+    for icon, name in sidebar_items:
+        st.sidebar.markdown(f"""
+        <div class='sidebar-item'>
+            <span class='sidebar-icon'>{icon}</span>
+            <span>{name}</span>
         </div>
         """, unsafe_allow_html=True)
 
-    # Display or hide resume based on the session state
-    if st.session_state["show_resume"]:
-        # Replace 'your-resume-url' with the actual URL to your resume file
-        resume_url = "https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing"
-        st.sidebar.write("""
-        <style>
-        .resume-container {
-            margin-top: 20px;
-        }
-
-        .resume-link {
-            display: inline-block;
-            margin-right: 15px;
-        }
-        </style>
-        <div class="resume-container">
-            <a class="resume-link" href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" target="_blank" style="font-size: 16px; text-decoration: none; color: #1f77b4;">View Resume</a>
+    # User Section
+    st.sidebar.markdown("""
+    <div class='user-section'>
+        <img src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png' alt='User Icon'>
+        <div class='user-info'>
+            <strong>My account</strong>
+            user@reflex.dev
         </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
     # Page title with waving hand emoji animation
     st.write("""
