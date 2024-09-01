@@ -1,3 +1,5 @@
+here is my code:
+
 import streamlit as st
 
 def web_portfolio():
@@ -75,21 +77,11 @@ def web_portfolio():
     """, unsafe_allow_html=True)
 
     # Sidebar Layout
-    st.sidebar.markdown("<div class='sidebar-title'>Hello</div>", unsafe_allow_html=True)
+    st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
     
     # Sidebar Items
     sidebar_items = [
-       if st.sidebar.button("📩 Contact"):
-        st.sidebar.write("### LinkedIn")
-        st.sidebar.markdown("""
-        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-            <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
-            style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
-            <a href="https://www.linkedin.com/in/kurt-xander-cabural-129132310/" 
-            target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
-        </div>
-        """, unsafe_allow_html=True)
-
+        ("📩", "Contact"),
         ("📝", "Skills"),
         ("📑", "Resume"),
         ("🔔", "Notifications"),
@@ -267,6 +259,3 @@ def web_portfolio():
     
 if __name__ == "__main__":
     web_portfolio()
-
-
-i want that when the word ("📩 Contact") is clicked it will drop down my infos in the sidebar
