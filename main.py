@@ -4,7 +4,7 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-   # Initialize session state for various sections
+  # Initialize session state for various sections
     if "show_contact_info" not in st.session_state:
         st.session_state.show_contact_info = False
     if "show_skills" not in st.session_state:
@@ -83,14 +83,6 @@ def web_portfolio():
         text-decoration: none;
     }
     
-    /* Notifications icons */
-    .notification-icon {
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-        border-radius: 50%;
-    }
-    
     /* User section */
     .user-section {
         display: flex;
@@ -120,7 +112,7 @@ def web_portfolio():
     """, unsafe_allow_html=True)
 
     # Sidebar Layout
-    st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
+    st.sidebar.markdown("<div class='sidebar-title'>Hello! 👋</div>", unsafe_allow_html=True)
     
     # Sidebar Items
     sidebar_items = [
@@ -128,7 +120,6 @@ def web_portfolio():
         ("📝", "Skills"),
         ("📑", "Resume"),
         ("🔔", "Notifications"),
-        ("⚙️", "Settings"),
         ("↩️", "Log out")
     ]
     
@@ -171,7 +162,7 @@ def web_portfolio():
                 st.sidebar.markdown("""
                 <div class='sidebar-content'>
                     <a href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" 
-                    target="_blank">View My Resume</a>
+                    target="_blank" class="sidebar-link">View My Resume</a>
                 </div>
                 """, unsafe_allow_html=True)
         elif name == "Notifications":
@@ -181,9 +172,9 @@ def web_portfolio():
                 st.sidebar.markdown("""
                 <div class='sidebar-content'>
                     <ul>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/652/652035.png" class="notification-icon" alt="Person 1">Person 1 - New Message</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/652/652034.png" class="notification-icon" alt="Person 2">Person 2 - Follow-up</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/652/652036.png" class="notification-icon" alt="Person 3">Person 3 - Job Opportunity</li>
+                        <li><a href="https://www.linkedin.com/in/person1" target="_blank" class="sidebar-link">Person 1 - New Message</a></li>
+                        <li><a href="https://www.linkedin.com/in/person2" target="_blank" class="sidebar-link">Person 2 - Follow-up</a></li>
+                        <li><a href="https://www.linkedin.com/in/person3" target="_blank" class="sidebar-link">Person 3 - Job Opportunity</a></li>
                         <!-- Add more notifications as needed -->
                     </ul>
                 </div>
