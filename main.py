@@ -79,7 +79,7 @@ def web_portfolio():
     st.sidebar.markdown("<div class='sidebar-title'>Hello</div>", unsafe_allow_html=True)
     
     # Sidebar Items with Expanders
-    with st.sidebar.expander("📩 Contact", expanded=False):
+    with st.sidebar.expander("📩 Contact"):
         st.write("### LinkedIn")
         st.markdown("""
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
