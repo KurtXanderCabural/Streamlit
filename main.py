@@ -122,7 +122,6 @@ def web_portfolio():
     if st.session_state["show_resume"]:
         st.sidebar.write("### Resume")
         st.sidebar.write("You can view or download my resume [here](https://example.com)")
-
     
     for icon, name in sidebar_items:
         st.sidebar.markdown(f"""
