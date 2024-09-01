@@ -294,6 +294,3 @@ def web_portfolio():
     
 if __name__ == "__main__":
     web_portfolio()
-
-
-i want that when the word ("📩 Contact") is clicked it will drop down my infos in the sidebar
