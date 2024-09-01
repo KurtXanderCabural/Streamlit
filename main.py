@@ -123,12 +123,6 @@ def web_portfolio():
         st.sidebar.write("### Resume")
         st.sidebar.write("You can view or download my resume [here](https://example.com)")
 
-        ("📝", "Skills"),
-        ("📑", "Resume"),
-        ("🔔", "Notifications"),
-        ("⚙️", "Settings"),
-        ("↩️", "Log out")
-    ]
     
     for icon, name in sidebar_items:
         st.sidebar.markdown(f"""
