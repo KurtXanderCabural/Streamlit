@@ -90,6 +90,31 @@ def web_portfolio():
         </div>
         """, unsafe_allow_html=True)
 
+# Display or hide contact information based on the session state
+    if st.session_state["show_contact"]:
+        st.sidebar.write("""
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <img src="https://cdn-icons-png.flaticon.com/128/6424/6424087.png" 
+            style="width: 25px; height: 25px; margin-right: 10px;" alt="Gmail Icon">
+            <a href="mailto:kurtxander1@gmail.com" style="text-decoration: none; color: inherit;">kurtxander1@gmail.com</a>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
+            style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
+            <a href="https://www.linkedin.com/in/kurt-xander-cabural-129132310/" 
+            target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <img src="https://cdn-icons-png.flaticon.com/128/6422/6422199.png" 
+            style="width: 25px; height: 25px; margin-right: 10px;" alt="Facebook Icon">
+            <a href="https://www.facebook.com/Cabural.Kurt.Xander.M" 
+            target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
+        </div>
+        """, unsafe_allow_html=True)
+    elif not st.session_state["show_skills"] and not st.session_state["show_resume"]:
+        st.sidebar.write("")  # Ensures nothing is shown when the info is hidden
+
+
         ("📝", "Skills"),
         ("📑", "Resume"),
         ("🔔", "Notifications"),
