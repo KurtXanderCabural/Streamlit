@@ -166,7 +166,11 @@ def web_portfolio():
                 """, unsafe_allow_html=True)
         elif name == "Log out":
             if st.sidebar.button(f"{icon} {name}"):
-                st.experimental_rerun()
+                st.markdown("""
+                <script>
+                window.location.href = "https://share.streamlit.io/";
+                </script>
+                """, unsafe_allow_html=True)
         else:
             st.sidebar.markdown(f"""
             <div class='sidebar-item'>
