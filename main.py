@@ -8,7 +8,11 @@ def web_portfolio():
     if "show_contact_info" not in st.session_state:
         st.session_state.show_contact_info = False
 
-    # Custom CSS to replicate the sidebar design
+    # Toggle function to show/hide contact info
+    def toggle_contact_info():
+        st.session_state.show_contact_info = not st.session_state.show_contact_info
+
+    # Custom CSS for sidebar
     st.markdown("""
     <style>
     /* Sidebar container */
@@ -92,6 +96,7 @@ def web_portfolio():
         ("↩️", "Log out")
     ]
     
+    # Loop to render sidebar items
     for icon, name in sidebar_items:
         if name == "Contact":
             contact_item = st.sidebar.markdown(f"""
@@ -100,6 +105,11 @@ def web_portfolio():
                 <span>{name}</span>
             </div>
             """, unsafe_allow_html=True)
+            
+            # Add a clickable element to toggle visibility
+            if st.sidebar.button("📩 Contact"):
+                toggle_contact_info()
+
             if st.session_state.show_contact_info:
                 st.sidebar.markdown("""
                 <div style="display: flex; align-items: center; margin-bottom: 20px; padding-left: 30px;">
