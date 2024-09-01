@@ -110,7 +110,7 @@ def web_portfolio():
     """, unsafe_allow_html=True)
 
     # Sidebar Layout
-    st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
+    st.sidebar.markdown("<div class='sidebar-title'>Hello! 👋</div>", unsafe_allow_html=True)
     
     # Sidebar Items
     sidebar_items = [
