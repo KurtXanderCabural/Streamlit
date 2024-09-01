@@ -37,6 +37,7 @@ def web_portfolio():
         color: #A899C0;
         text-decoration: none;
         margin: 5px 0;
+        cursor: pointer;
     }
     
     .sidebar-item:hover {
@@ -93,8 +94,12 @@ def web_portfolio():
     
     for icon, name in sidebar_items:
         if name == "Contact":
-            if st.sidebar.button(f"{icon} {name}"):
-                st.session_state.show_contact_info = not st.session_state.show_contact_info
+            contact_item = st.sidebar.markdown(f"""
+            <div class='sidebar-item' onClick="toggleContactInfo()">
+                <span class='sidebar-icon'>{icon}</span>
+                <span>{name}</span>
+            </div>
+            """, unsafe_allow_html=True)
             if st.session_state.show_contact_info:
                 st.sidebar.markdown("""
                 <div style="display: flex; align-items: center; margin-bottom: 20px; padding-left: 30px;">
