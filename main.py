@@ -1,3 +1,5 @@
+here is my code for python streamlit app:
+
 import streamlit as st
 
 def web_portfolio():
@@ -77,12 +79,24 @@ def web_portfolio():
     # Sidebar Layout
     st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
     
-    # Sidebar Items with Radio Buttons
-    selection = st.sidebar.radio(
-        "Navigation",
-        ["📩 Contact", "📝 Skills", "📑 Resume", "🔔 Notifications", "⚙️ Settings", "↩️ Log out"]
-    )
+    # Sidebar Items
+    sidebar_items = [
+        ("📩", "Contact"),
+        ("📝", "Skills"),
+        ("📑", "Resume"),
+        ("🔔", "Notifications"),
+        ("⚙️", "Settings"),
+        ("↩️", "Log out")
+    ]
     
+    for icon, name in sidebar_items:
+        st.sidebar.markdown(f"""
+        <div class='sidebar-item'>
+            <span class='sidebar-icon'>{icon}</span>
+            <span>{name}</span>
+        </div>
+        """, unsafe_allow_html=True)
+
     # User Section
     st.sidebar.markdown("""
     <div class='user-section'>
@@ -160,7 +174,7 @@ def web_portfolio():
     }
 
     social_icons_html = [
-        f"<a href='{social_icons_data[platform][0]}' target='_blank' rel='noopener noreferrer' style='margin-right: 10px;'>"
+        f"<a href='{social_icons_data[platform][0]}' target='_blank' style='margin-right: 10px;'>"
         f"<img class='social-icon' src='{social_icons_data[platform][1]}' alt='{platform}'"
         f" style='width: 25px; height: 25px;'></a>"
         for platform in social_icons_data
@@ -173,60 +187,33 @@ def web_portfolio():
 
     st.write("##")
 
-    # Display content based on the sidebar selection
-    if selection == "📩 Contact":
-        st.write("## Contact Information")
-        st.write("You can connect with me on [LinkedIn](https://www.linkedin.com/in/kurt-xander-cabural-129132310/).")
+    # --- About Me Section ---
+    st.write('\n')
+    st.subheader("About Me")
+    st.write("---")
 
-    elif selection == "📝 Skills":
-        st.write("## Skills")
-        st.write("Here you can list your skills...")
+    st.markdown("""
+    I am a 4th-year IT student with a strong passion for technology and collaborative projects. 
+    Throughout my academic journey, I have consistently worked with my classmates on various projects, 
+    gaining hands-on experience and honing my skills in web development and design. I specialize in HTML, React JS, 
+    and React TS, and have a keen eye for design, utilizing Figma to create intuitive and visually appealing user interfaces. 
+    My ability to work effectively in a team, combined with my technical expertise and design skills, positions me well to contribute to innovative 
+    and impactful projects. I am dedicated to continuous learning and excited to bring my skills and enthusiasm to new challenges in the IT field.
+    """)
 
-    elif selection == "📑 Resume":
-        st.write("## Resume")
-        st.write("Here you can add your resume information...")
+    # --- Educational Attainment ---
+    st.write('\n')
+    st.subheader("Educational Attainment")
+    st.write("---")
 
-    elif selection == "🔔 Notifications":
-        st.write("## Notifications")
-        st.write("Manage your notifications here...")
-
-    elif selection == "⚙️ Settings":
-        st.write("## Settings")
-        st.write("Adjust your settings here...")
-
-    elif selection == "↩️ Log out":
-        st.write("## Log out")
-        st.write("You have been logged out.")
-
-    # About Me Section
-    if selection == "📩 Contact":
-        st.write('\n')
-        st.subheader("About Me")
-        st.write("---")
-
-        st.markdown("""
-        I am a 4th-year IT student with a strong passion for technology and collaborative projects. 
-        Throughout my academic journey, I have consistently worked with my classmates on various projects, 
-        gaining hands-on experience and honing my skills in web development and design. I specialize in HTML, React JS, 
-        and React TS, and have a keen eye for design, utilizing Figma to create intuitive and visually appealing user interfaces. 
-        My ability to work effectively in a team, combined with my technical expertise and design skills, positions me well to contribute to innovative 
-        and impactful projects. I am dedicated to continuous learning and excited to bring my skills and enthusiasm to new challenges in the IT field.
-        """)
-
-        # Educational Attainment
-        st.write('\n')
-        st.subheader("Educational Attainment")
-        st.write("---")
-
-        # SCHOOL 1
-        st.write("📚", "**Cebu Institute of Technology University**")
-        st.write("Bachelor of Science in Information Technology | 2024 -2025")
-        st.write(
-        """
-        - ► Studying Project Management, Data Analytics, and Application Development with Emerging Technologies
-        """
-        )
-
+    # --- SCHOOL 1
+    st.write("📚", "**Cebu Institute of Technology University**")
+    st.write("Bachelor of Science in Information Technology | 2024 -2025")
+    st.write(
+    """
+    - ► Studying Project Management, Data Analytics, and Application Development with Emerging Technologies
+    """
+    )
 
     # --- SCHOOL 2
     st.write('\n')
