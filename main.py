@@ -4,15 +4,7 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-   # Initialize session state for contact info visibility
-    if "show_contact_info" not in st.session_state:
-        st.session_state.show_contact_info = False
-
-    # Toggle function to show/hide contact info
-    def toggle_contact_info():
-        st.session_state.show_contact_info = not st.session_state.show_contact_info
-
-    # Custom CSS for sidebar
+   # Custom CSS to replicate the sidebar design
     st.markdown("""
     <style>
     /* Sidebar container */
@@ -86,9 +78,41 @@ def web_portfolio():
     # Sidebar Layout
     st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
     
+    # Initialize state for contact info visibility
+    if 'contact_info_visible' not in st.session_state:
+        st.session_state.contact_info_visible = False
+
+    # Function to toggle contact info visibility
+    def toggle_contact_info():
+        st.session_state.contact_info_visible = not st.session_state.contact_info_visible
+
     # Sidebar Items
+    st.sidebar.markdown(
+        f"""
+        <div class='sidebar-item' onclick="toggle_contact_info()">
+            <span class='sidebar-icon'>📩</span>
+            <span>Contact</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Show/hide LinkedIn contact info based on state
+    if st.session_state.contact_info_visible:
+        st.sidebar.markdown(
+            """
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
+                style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
+                <a href="https://www.linkedin.com/in/kurt-xander-cabural-129132310/" 
+                target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    # Sidebar other items
     sidebar_items = [
-        ("📩", "Contact"),
         ("📝", "Skills"),
         ("📑", "Resume"),
         ("🔔", "Notifications"),
@@ -96,37 +120,13 @@ def web_portfolio():
         ("↩️", "Log out")
     ]
     
-    # Loop to render sidebar items
     for icon, name in sidebar_items:
-        if name == "Contact":
-            contact_item = st.sidebar.markdown(f"""
-            <div class='sidebar-item' onClick="toggleContactInfo()">
-                <span class='sidebar-icon'>{icon}</span>
-                <span>{name}</span>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Add a clickable element to toggle visibility
-            if st.sidebar.button("📩 Contact"):
-                toggle_contact_info()
-
-            if st.session_state.show_contact_info:
-                st.sidebar.markdown("""
-                <div style="display: flex; align-items: center; margin-bottom: 20px; padding-left: 30px;">
-                    <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
-                    style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
-                    <a href="https://www.linkedin.com/in/kurt-xander-cabural-129132310/" 
-                    target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
-                </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.sidebar.markdown(f"""
-            <div class='sidebar-item'>
-                <span class='sidebar-icon'>{icon}</span>
-                <span>{name}</span>
-            </div>
-            """, unsafe_allow_html=True)
-
+        st.sidebar.markdown(f"""
+        <div class='sidebar-item'>
+            <span class='sidebar-icon'>{icon}</span>
+            <span>{name}</span>
+        </div>
+        """, unsafe_allow_html=True)
     # User Section
     st.sidebar.markdown("""
     <div class='user-section'>
