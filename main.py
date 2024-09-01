@@ -4,11 +4,13 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-   # Initialize session state for contact info and skills visibility
+   # Initialize session state for contact info, skills visibility, and resume link visibility
     if "show_contact_info" not in st.session_state:
         st.session_state.show_contact_info = False
     if "show_skills" not in st.session_state:
         st.session_state.show_skills = False
+    if "show_resume" not in st.session_state:
+        st.session_state.show_resume = False
 
     # Custom CSS to replicate the sidebar design and add moving icons
     st.markdown("""
@@ -69,6 +71,14 @@ def web_portfolio():
     /* Sidebar content */
     .sidebar-content {
         padding-left: 30px;
+    }
+    
+    /* Sidebar links */
+    .sidebar-link {
+        display: block;
+        margin-top: 10px;
+        color: #A899C0;
+        text-decoration: none;
     }
     
     /* User section */
@@ -138,10 +148,20 @@ def web_portfolio():
                         <li><img src="https://cdn-icons-png.flaticon.com/128/871/871210.png" class="moving-icon" alt="Figma Icon">Figma Design</li>
                         <li><img src="https://cdn-icons-png.flaticon.com/128/226/226777.png" class="moving-icon" alt="Java Icon">Java Programming</li>
                         <li><img src="https://cdn-icons-png.flaticon.com/128/919/919831.png" class="moving-icon" alt="CSS Icon">CSS Web Development</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/5968/5968242.png" class="moving-icon" alt="JavaScript Icon">JavaScript WebDev</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/5968/5968242.png" class="moving-icon" alt="JavaScript Icon">JavaScript Web Development</li>
                         <li><img src="https://cdn-icons-png.flaticon.com/128/2620/2620675.png" class="moving-icon" alt="MySQL Icon">MySQL Database</li>
                         <li><img src="https://cdn-icons-png.flaticon.com/128/2922/2922501.png" class="moving-icon" alt="Team Collaboration Icon">Team Collaboration</li>
                     </ul>
+                </div>
+                """, unsafe_allow_html=True)
+        elif name == "Resume":
+            if st.sidebar.button(f"{icon} {name}"):
+                st.session_state.show_resume = not st.session_state.show_resume
+            if st.session_state.show_resume:
+                st.sidebar.markdown("""
+                <div class='sidebar-content'>
+                    <a href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" 
+                    target="_blank" class="sidebar-link">View My Resume</a>
                 </div>
                 """, unsafe_allow_html=True)
         else:
@@ -151,13 +171,14 @@ def web_portfolio():
                 <span>{name}</span>
             </div>
             """, unsafe_allow_html=True)
+            
     # User Section
     st.sidebar.markdown("""
     <div class='user-section'>
         <img src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png' alt='User Icon'>
         <div class='user-info'>
             <strong>My account</strong>
-            user@reflex.dev
+            kurtxander.cabural@cit.edu
         </div>
     </div>
     """, unsafe_allow_html=True)
