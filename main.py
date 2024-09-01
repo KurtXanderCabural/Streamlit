@@ -4,7 +4,7 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-   # Custom CSS to replicate the sidebar design
+    # Custom CSS to replicate the sidebar design
     st.markdown("""
     <style>
     /* Sidebar container */
@@ -33,6 +33,7 @@ def web_portfolio():
         color: #A899C0;
         text-decoration: none;
         margin: 5px 0;
+        cursor: pointer;
     }
     
     .sidebar-item:hover {
@@ -77,11 +78,10 @@ def web_portfolio():
     # Sidebar Layout
     st.sidebar.markdown("<div class='sidebar-title'>Hello</div>", unsafe_allow_html=True)
     
-    # Sidebar Items
-    sidebar_items = [
-       if st.sidebar.button("📩 Contact"):
-        st.sidebar.write("### LinkedIn")
-        st.sidebar.markdown("""
+    # Sidebar Items with Expanders
+    with st.sidebar.expander("📩 Contact", expanded=False):
+        st.write("### LinkedIn")
+        st.markdown("""
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
             style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
@@ -90,20 +90,41 @@ def web_portfolio():
         </div>
         """, unsafe_allow_html=True)
 
-        ("📝", "Skills"),
-        ("📑", "Resume"),
-        ("🔔", "Notifications"),
-        ("⚙️", "Settings"),
-        ("↩️", "Log out")
-    ]
+    # Additional sidebar items
+    st.sidebar.markdown(f"""
+    <div class='sidebar-item'>
+        <span class='sidebar-icon'>📝</span>
+        <span>Skills</span>
+    </div>
+    """, unsafe_allow_html=True)
     
-    for icon, name in sidebar_items:
-        st.sidebar.markdown(f"""
-        <div class='sidebar-item'>
-            <span class='sidebar-icon'>{icon}</span>
-            <span>{name}</span>
-        </div>
-        """, unsafe_allow_html=True)
+    st.sidebar.markdown(f"""
+    <div class='sidebar-item'>
+        <span class='sidebar-icon'>📑</span>
+        <span>Resume</span>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.sidebar.markdown(f"""
+    <div class='sidebar-item'>
+        <span class='sidebar-icon'>🔔</span>
+        <span>Notifications</span>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.sidebar.markdown(f"""
+    <div class='sidebar-item'>
+        <span class='sidebar-icon'>⚙️</span>
+        <span>Settings</span>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.sidebar.markdown(f"""
+    <div class='sidebar-item'>
+        <span class='sidebar-icon'>↩️</span>
+        <span>Log out</span>
+    </div>
+    """, unsafe_allow_html=True)
 
     # User Section
     st.sidebar.markdown("""
