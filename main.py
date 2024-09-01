@@ -5,103 +5,106 @@ def web_portfolio():
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
    # Custom CSS to replicate the sidebar design
-st.markdown("""
-<style>
-/* Sidebar container */
-.css-18e3th9 {
-    background-color: #2E1D43;
-    padding-top: 20px;
-}
-
-/* Sidebar title */
-.sidebar-title {
-    font-size: 24px;
-    color: #A899C0;
-    font-weight: bold;
-    padding: 10px;
-    text-align: left;
-    margin-bottom: 30px;
-    margin-left: 20px;
-}
-
-/* Sidebar items */
-.sidebar-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #A899C0;
-    text-decoration: none;
-    margin: 5px 0;
-}
-
-.sidebar-item:hover {
-    background-color: #45275E;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-/* Sidebar icons */
-.sidebar-icon {
-    margin-right: 10px;
-}
-
-/* User section */
-.user-section {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: #2E1D43;
-    margin-top: 40px;
-    border-top: 1px solid #A899C0;
-}
-
-.user-section img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.user-info {
-    font-size: 14px;
-    color: #A899C0;
-}
-
-.user-info strong {
-    display: block;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# Sidebar Layout
-st.sidebar.markdown("<div class='sidebar-title'>Portfolio</div>", unsafe_allow_html=True)
-
-# Sidebar Items (Contact, Skills, Resume)
-sidebar_items = [
-    ("📞", "Contact"),
-    ("💼", "Skills"),
-    ("📄", "Resume")
-]
-
-for icon, name in sidebar_items:
-    st.sidebar.markdown(f"""
-    <div class='sidebar-item'>
-        <span class='sidebar-icon'>{icon}</span>
-        <span>{name}</span>
-    </div>
+    st.markdown("""
+    <style>
+    /* Sidebar container */
+    .css-18e3th9 {
+        background-color: #2E1D43;
+        padding-top: 20px;
+    }
+    
+    /* Sidebar title */
+    .sidebar-title {
+        font-size: 24px;
+        color: #A899C0;
+        font-weight: bold;
+        padding: 10px;
+        text-align: left;
+        margin-bottom: 30px;
+        margin-left: 20px;
+    }
+    
+    /* Sidebar items */
+    .sidebar-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #A899C0;
+        text-decoration: none;
+        margin: 5px 0;
+    }
+    
+    .sidebar-item:hover {
+        background-color: #45275E;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    
+    /* Sidebar icons */
+    .sidebar-icon {
+        margin-right: 10px;
+    }
+    
+    /* User section */
+    .user-section {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        background-color: #2E1D43;
+        margin-top: 40px;
+        border-top: 1px solid #A899C0;
+    }
+    
+    .user-section img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .user-info {
+        font-size: 14px;
+        color: #A899C0;
+    }
+    
+    .user-info strong {
+        display: block;
+    }
+    </style>
     """, unsafe_allow_html=True)
 
-# User Section
-st.sidebar.markdown("""
-<div class='user-section'>
-    <img src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png' alt='User Icon'>
-    <div class='user-info'>
-        <strong>Kurt Xander Cabural</strong>
-        kurt@example.com
+    # Sidebar Layout
+    st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
+    
+    # Sidebar Items
+    sidebar_items = [
+        ("🏠", "Dashboard"),
+        ("📄", "Projects"),
+        ("📊", "Analytics"),
+        ("📧", "Messages"),
+        ("⚙️", "Settings"),
+        ("↩️", "Log out")
+    ]
+    
+    for icon, name in sidebar_items:
+        st.sidebar.markdown(f"""
+        <div class='sidebar-item'>
+            <span class='sidebar-icon'>{icon}</span>
+            <span>{name}</span>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # User Section
+    st.sidebar.markdown("""
+    <div class='user-section'>
+        <img src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png' alt='User Icon'>
+        <div class='user-info'>
+            <strong>My account</strong>
+            user@reflex.dev
+        </div>
     </div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
     # Page title with waving hand emoji animation
     st.write("""
