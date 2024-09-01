@@ -95,6 +95,13 @@ def web_portfolio():
         if name == "Contact":
             if st.sidebar.button(f"{icon} {name}"):
                 st.session_state.show_contact_info = not st.session_state.show_contact_info
+            if st.session_state.show_contact_info:
+                st.sidebar.markdown("""
+                <div class='sidebar-item' style='padding-left: 30px;'>
+                    <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
+                    <a href='https://www.linkedin.com/in/kurt-xander-cabural-129132310/' target='_blank' style='color: #A899C0; text-decoration: underline;'>Kurt Xander Cabural</a>
+                </div>
+                """, unsafe_allow_html=True)
         else:
             st.sidebar.markdown(f"""
             <div class='sidebar-item'>
@@ -102,15 +109,6 @@ def web_portfolio():
                 <span>{name}</span>
             </div>
             """, unsafe_allow_html=True)
-
-    # Display LinkedIn info under Contact if toggled
-    if st.session_state.show_contact_info:
-        st.sidebar.markdown("""
-        <div class='sidebar-item' style='padding-left: 40px;'>
-            <span>LinkedIn: </span>
-            <a href='https://www.linkedin.com/in/kurt-xander-cabural-129132310/' target='_blank' style='color: #A899C0; text-decoration: underline;'>Kurt Xander Cabural</a>
-        </div>
-        """, unsafe_allow_html=True)
 
     # User Section
     st.sidebar.markdown("""
