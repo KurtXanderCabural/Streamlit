@@ -91,6 +91,13 @@ def web_portfolio():
         """, unsafe_allow_html=True)
 
     # Additional sidebar items
+     st.sidebar.markdown(f"""
+    <div class='sidebar-item'>
+        <span class='sidebar-icon'>📩</span>
+        <span>Contact</span>
+    </div>
+    """, unsafe_allow_html=True)
+
     st.sidebar.markdown(f"""
     <div class='sidebar-item'>
         <span class='sidebar-icon'>📝</span>
