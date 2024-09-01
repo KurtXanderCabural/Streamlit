@@ -4,7 +4,11 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-   # Custom CSS to replicate the sidebar design
+   # Initialize session state for contact info visibility
+    if "show_contact_info" not in st.session_state:
+        st.session_state.show_contact_info = False
+
+    # Custom CSS to replicate the sidebar design
     st.markdown("""
     <style>
     /* Sidebar container */
@@ -88,10 +92,23 @@ def web_portfolio():
     ]
     
     for icon, name in sidebar_items:
-        st.sidebar.markdown(f"""
-        <div class='sidebar-item'>
-            <span class='sidebar-icon'>{icon}</span>
-            <span>{name}</span>
+        if name == "Contact":
+            if st.sidebar.button(f"{icon} {name}"):
+                st.session_state.show_contact_info = not st.session_state.show_contact_info
+        else:
+            st.sidebar.markdown(f"""
+            <div class='sidebar-item'>
+                <span class='sidebar-icon'>{icon}</span>
+                <span>{name}</span>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Display LinkedIn info under Contact if toggled
+    if st.session_state.show_contact_info:
+        st.sidebar.markdown("""
+        <div class='sidebar-item' style='padding-left: 40px;'>
+            <span>LinkedIn: </span>
+            <a href='https://www.linkedin.com/in/kurt-xander-cabural-129132310/' target='_blank' style='color: #A899C0; text-decoration: underline;'>Kurt Xander Cabural</a>
         </div>
         """, unsafe_allow_html=True)
 
