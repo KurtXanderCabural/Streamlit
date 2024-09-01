@@ -4,16 +4,14 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-   # Custom CSS to replicate the sidebar design
+  # Custom CSS for sidebar design
     st.markdown("""
     <style>
-    /* Sidebar container */
     .css-18e3th9 {
         background-color: #2E1D43;
         padding-top: 20px;
     }
-    
-    /* Sidebar title */
+
     .sidebar-title {
         font-size: 24px;
         color: #A899C0;
@@ -23,8 +21,7 @@ def web_portfolio():
         margin-bottom: 30px;
         margin-left: 20px;
     }
-    
-    /* Sidebar items */
+
     .sidebar-item {
         display: flex;
         align-items: center;
@@ -33,67 +30,107 @@ def web_portfolio():
         color: #A899C0;
         text-decoration: none;
         margin: 5px 0;
-    }
-    
-    .sidebar-item:hover {
-        background-color: #45275E;
         cursor: pointer;
         border-radius: 10px;
+        transition: background-color 0.3s ease;
     }
-    
-    /* Sidebar icons */
+
+    .sidebar-item:hover {
+        background-color: #45275E;
+    }
+
     .sidebar-icon {
         margin-right: 10px;
     }
-    
-    /* User section */
-    .user-section {
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        background-color: #2E1D43;
-        margin-top: 40px;
-        border-top: 1px solid #A899C0;
+
+    .section-content {
+        display: none;
+        margin: 10px;
     }
-    
-    .user-section img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
+
+    .section-content.show {
+        display: block;
+    }
+
+    .skills-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .skills-list li {
+        margin-bottom: 15px;
+    }
+
+    .moving-icon {
+        display: inline-block;
+        animation: move 2s ease-in-out infinite;
+        width: 25px;
+        height: 25px;
         margin-right: 10px;
     }
-    
-    .user-info {
-        font-size: 14px;
-        color: #A899C0;
+
+    @keyframes move {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(10px); }
+        100% { transform: translateX(0); }
     }
-    
-    .user-info strong {
-        display: block;
+
+    .resume-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .resume-link {
+        font-size: 16px;
+        text-decoration: none;
+        color: #1f77b4;
     }
     </style>
     """, unsafe_allow_html=True)
 
-    # Sidebar Layout
+    # Initialize session state
+    if "show_contact" not in st.session_state:
+        st.session_state["show_contact"] = False
+    if "show_skills" not in st.session_state:
+        st.session_state["show_skills"] = False
+    if "show_resume" not in st.session_state:
+        st.session_state["show_resume"] = False
+
+    # Sidebar Items
     st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
     
-    # Sidebar Items
+    def toggle_section(section_name):
+        if section_name == "contact":
+            st.session_state["show_contact"] = not st.session_state["show_contact"]
+        elif section_name == "skills":
+            st.session_state["show_skills"] = not st.session_state["show_skills"]
+        elif section_name == "resume":
+            st.session_state["show_resume"] = not st.session_state["show_resume"]
+
     sidebar_items = [
-        ("📩", "Contact"),
-        ("📝", "Skills"),
-        ("📑", "Resume"),
+        ("📩", "Contact", "contact"),
+        ("📝", "Skills", "skills"),
+        ("📑", "Resume", "resume"),
         ("🔔", "Notifications"),
         ("⚙️", "Settings"),
         ("↩️", "Log out")
     ]
-    
-    for icon, name in sidebar_items:
-        st.sidebar.markdown(f"""
-        <div class='sidebar-item'>
-            <span class='sidebar-icon'>{icon}</span>
-            <span>{name}</span>
-        </div>
-        """, unsafe_allow_html=True)
+
+    for icon, name, section in sidebar_items:
+        if section:
+            st.sidebar.markdown(f"""
+            <div class='sidebar-item' onclick="window.parent.postMessage({{'type':'toggle', 'section':'{section}'}})">
+                <span class='sidebar-icon'>{icon}</span>
+                <span>{name}</span>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.sidebar.markdown(f"""
+            <div class='sidebar-item'>
+                <span class='sidebar-icon'>{icon}</span>
+                <span>{name}</span>
+            </div>
+            """, unsafe_allow_html=True)
 
     # User Section
     st.sidebar.markdown("""
@@ -105,18 +142,6 @@ def web_portfolio():
         </div>
     </div>
     """, unsafe_allow_html=True)
-
-     # Handle toggling sections
-    st.write("<script>"
-             "window.addEventListener('message', function(event) {"
-             "  if (event.data.type === 'toggle') {"
-             "    const section = event.data.section;"
-             "    const state = window.streamlit.session_state;"
-             "    state[section] = !state[section];"
-             "    window.location.reload();"
-             "  }"
-             "});"
-             "</script>", unsafe_allow_html=True)
 
     # Display or hide content based on session state
     if st.session_state["show_contact"]:
