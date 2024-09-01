@@ -4,7 +4,7 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-   # Initialize session state for contact info, skills visibility, and resume link visibility
+   # Initialize session state for various sections
     if "show_contact_info" not in st.session_state:
         st.session_state.show_contact_info = False
     if "show_skills" not in st.session_state:
@@ -110,7 +110,7 @@ def web_portfolio():
     """, unsafe_allow_html=True)
 
     # Sidebar Layout
-    st.sidebar.markdown("<div class='sidebar-title'>Hello! 👋</div>", unsafe_allow_html=True)
+    st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
     
     # Sidebar Items
     sidebar_items = [
@@ -164,6 +164,9 @@ def web_portfolio():
                     target="_blank" class="sidebar-link">View My Resume</a>
                 </div>
                 """, unsafe_allow_html=True)
+        elif name == "Log out":
+            if st.sidebar.button(f"{icon} {name}"):
+                st.experimental_rerun()
         else:
             st.sidebar.markdown(f"""
             <div class='sidebar-item'>
