@@ -11,6 +11,8 @@ def web_portfolio():
         st.session_state.show_skills = False
     if "show_resume" not in st.session_state:
         st.session_state.show_resume = False
+    if "show_notifications" not in st.session_state:
+        st.session_state.show_notifications = False
 
     # Custom CSS to replicate the sidebar design and add moving icons
     st.markdown("""
@@ -118,7 +120,6 @@ def web_portfolio():
         ("📝", "Skills"),
         ("📑", "Resume"),
         ("🔔", "Notifications"),
-        ("⚙️", "Settings"),
         ("↩️", "Log out")
     ]
     
@@ -162,6 +163,20 @@ def web_portfolio():
                 <div class='sidebar-content'>
                     <a href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" 
                     target="_blank" class="sidebar-link">View My Resume</a>
+                </div>
+                """, unsafe_allow_html=True)
+        elif name == "Notifications":
+            if st.sidebar.button(f"{icon} {name}"):
+                st.session_state.show_notifications = not st.session_state.show_notifications
+            if st.session_state.show_notifications:
+                st.sidebar.markdown("""
+                <div class='sidebar-content'>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/person1" target="_blank" class="sidebar-link">Person 1 - New Message</a></li>
+                        <li><a href="https://www.linkedin.com/in/person2" target="_blank" class="sidebar-link">Person 2 - Follow-up</a></li>
+                        <li><a href="https://www.linkedin.com/in/person3" target="_blank" class="sidebar-link">Person 3 - Job Opportunity</a></li>
+                        <!-- Add more notifications as needed -->
+                    </ul>
                 </div>
                 """, unsafe_allow_html=True)
         elif name == "Log out":
