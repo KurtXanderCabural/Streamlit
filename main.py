@@ -4,9 +4,11 @@ def web_portfolio():
     # Page configurations
     st.set_page_config(page_title="Kurt Xander Cabural", page_icon="⭐")
 
-   # Initialize session state for contact info visibility
+   # Initialize session state for contact info and skills visibility
     if "show_contact_info" not in st.session_state:
         st.session_state.show_contact_info = False
+    if "show_skills" not in st.session_state:
+        st.session_state.show_skills = False
 
     # Custom CSS to replicate the sidebar design
     st.markdown("""
@@ -75,42 +77,12 @@ def web_portfolio():
     .user-info strong {
         display: block;
     }
-
-    .moving-icon {
-        display: inline-block;
-        animation: move 2s ease-in-out infinite;
-        width: 25px;
-        height: 25px;
-        margin-right: 10px;
-    }
-
-    @keyframes move {
-        0% { transform: translateX(0); }
-        50% { transform: translateX(10px); }
-        100% { transform: translateX(0); }
-    }
-
-    .skills-list {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .skills-list li {
-        margin-bottom: 15px;
-    }
     </style>
     """, unsafe_allow_html=True)
 
     # Sidebar Layout
     st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
-
-     # Manage visibility state
-    if "show_skills" not in st.session_state:
-        st.session_state.show_skills = False
-
-    def toggle_skills():
-        st.session_state.show_skills = not st.session_state.show_skills
-        
+    
     # Sidebar Items
     sidebar_items = [
         ("📩", "Contact"),
@@ -134,41 +106,31 @@ def web_portfolio():
                     target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
                 </div>
                 """, unsafe_allow_html=True)
+        elif name == "Skills":
+            if st.sidebar.button(f"{icon} {name}"):
+                st.session_state.show_skills = not st.session_state.show_skills
+            if st.session_state.show_skills:
+                st.sidebar.markdown("""
+                <div style="padding-left: 30px;">
+                    <ul>
+                        <li>HTML</li>
+                        <li>React JS</li>
+                        <li>React TS</li>
+                        <li>Figma Design</li>
+                        <li>Java Programming</li>
+                        <li>CSS Web Development</li>
+                        <li>JavaScript Web Development</li>
+                        <li>MySQL Database</li>
+                        <li>Team Collaboration</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
         else:
             st.sidebar.markdown(f"""
             <div class='sidebar-item'>
                 <span class='sidebar-icon'>{icon}</span>
                 <span>{name}</span>
             </div>
-            """, unsafe_allow_html=True)
-
-    for icon, name in sidebar_items:
-        if name == "Skills":
-            st.sidebar.markdown(f"""
-            <div class='sidebar-item' onClick="window.location.reload();">{icon} {name}</div>
-            """, unsafe_allow_html=True)
-            if st.sidebar.button("Toggle Skills", on_click=toggle_skills):
-                pass
-            if st.session_state.show_skills:
-                st.sidebar.markdown("""
-                <div style="margin-bottom: 20px;">
-                    <h3>Skills</h3>
-                    <ul class="skills-list">
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/732/732212.png" class="moving-icon" alt="HTML Icon">HTML</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/919/919827.png" class="moving-icon" alt="React JS Icon">React JS</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/919/919830.png" class="moving-icon" alt="React TS Icon">React TS</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/871/871210.png" class="moving-icon" alt="Figma Icon">Figma Design</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/226/226777.png" class="moving-icon" alt="Java Icon">Java Programming</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/919/919831.png" class="moving-icon" alt="CSS Icon">CSS Web Development</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/5968/5968242.png" class="moving-icon" alt="JavaScript Icon">JavaScript Web Development</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/2620/2620675.png" class="moving-icon" alt="MySQL Icon">MySQL Database</li>
-                        <li><img src="https://cdn-icons-png.flaticon.com/128/2922/2922501.png" class="moving-icon" alt="Team Collaboration Icon">Team Collaboration</li>
-                    </ul>
-                </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.sidebar.markdown(f"""
-            <div class='sidebar-item'>{icon} {name}</div>
             """, unsafe_allow_html=True)
 
     # User Section
