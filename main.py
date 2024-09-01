@@ -1,5 +1,3 @@
-here is my code for python streamlit app:
-
 import streamlit as st
 
 def web_portfolio():
