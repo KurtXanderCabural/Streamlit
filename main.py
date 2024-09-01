@@ -74,6 +74,26 @@ def web_portfolio():
     </style>
     """, unsafe_allow_html=True)
 
+    # Initialize session state
+    if "show_contact" not in st.session_state:
+        st.session_state["show_contact"] = False
+    if "show_skills" not in st.session_state:
+        st.session_state["show_skills"] = False
+    if "show_resume" not in st.session_state:
+        st.session_state["show_resume"] = False
+
+    # Sidebar Items
+    st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
+    
+    def toggle_section(section_name):
+        if section_name == "contact":
+            st.session_state["show_contact"] = not st.session_state["show_contact"]
+        elif section_name == "skills":
+            st.session_state["show_skills"] = not st.session_state["show_skills"]
+        elif section_name == "resume":
+            st.session_state["show_resume"] = not st.session_state["show_resume"]
+
+
     # Sidebar Layout
     st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
     
@@ -87,13 +107,21 @@ def web_portfolio():
         ("↩️", "Log out")
     ]
     
-    for icon, name in sidebar_items:
-        st.sidebar.markdown(f"""
-        <div class='sidebar-item'>
-            <span class='sidebar-icon'>{icon}</span>
-            <span>{name}</span>
-        </div>
-        """, unsafe_allow_html=True)
+    for icon, name, section in sidebar_items:
+        if section:
+            st.sidebar.markdown(f"""
+            <div class='sidebar-item' onclick="window.parent.postMessage({{'type':'toggle', 'section':'{section}'}})">
+                <span class='sidebar-icon'>{icon}</span>
+                <span>{name}</span>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.sidebar.markdown(f"""
+            <div class='sidebar-item'>
+                <span class='sidebar-icon'>{icon}</span>
+                <span>{name}</span>
+            </div>
+            """, unsafe_allow_html=True)
 
     # User Section
     st.sidebar.markdown("""
@@ -105,6 +133,53 @@ def web_portfolio():
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+     # Display or hide content based on session state
+    if st.session_state["show_contact"]:
+        st.sidebar.write("""
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <img src="https://cdn-icons-png.flaticon.com/128/6424/6424087.png" 
+            style="width: 25px; height: 25px; margin-right: 10px;" alt="Gmail Icon">
+            <a href="mailto:kurtxander1@gmail.com" style="text-decoration: none; color: inherit;">kurtxander1@gmail.com</a>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <img src="https://cdn-icons-png.flaticon.com/128/6422/6422202.png" 
+            style="width: 25px; height: 25px; margin-right: 10px;" alt="LinkedIn Icon">
+            <a href="https://www.linkedin.com/in/kurt-xander-cabural-129132310/" 
+            target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <img src="https://cdn-icons-png.flaticon.com/128/6422/6422199.png" 
+            style="width: 25px; height: 25px; margin-right: 10px;" alt="Facebook Icon">
+            <a href="https://www.facebook.com/Cabural.Kurt.Xander.M" 
+            target="_blank" style="text-decoration: none; color: inherit;">Kurt Xander Cabural</a>
+        </div>
+        """, unsafe_allow_html=True)
+
+    if st.session_state["show_skills"]:
+        st.sidebar.write("""
+        <div style="margin-bottom: 20px;">
+            <h3>Skills</h3>
+            <ul class="skills-list">
+                <li><img src="https://cdn-icons-png.flaticon.com/128/732/732212.png" class="moving-icon" alt="HTML Icon">HTML</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919827.png" class="moving-icon" alt="React JS Icon">React JS</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919830.png" class="moving-icon" alt="React TS Icon">React TS</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/871/871210.png" class="moving-icon" alt="Figma Icon">Figma Design</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/226/226777.png" class="moving-icon" alt="Java Icon">Java Programming</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/919/919831.png" class="moving-icon" alt="CSS Icon">CSS Web Development</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/5968/5968242.png" class="moving-icon" alt="JavaScript Icon">JavaScript Web Development</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/2620/2620675.png" class="moving-icon" alt="MySQL Icon">MySQL Database</li>
+                <li><img src="https://cdn-icons-png.flaticon.com/128/2922/2922501.png" class="moving-icon" alt="Team Collaboration Icon">Team Collaboration</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+
+    if st.session_state["show_resume"]:
+        st.sidebar.write("""
+        <div class="resume-container">
+            <a class="resume-link" href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" target="_blank">View Resume</a>
+        </div>
+        """, unsafe_allow_html=True)
 
     # Page title with waving hand emoji animation
     st.write("""
