@@ -74,24 +74,12 @@ def web_portfolio():
     </style>
     """, unsafe_allow_html=True)
 
-    # Initialize session state for toggling sections
-    if "show_contact" not in st.session_state:
-        st.session_state["show_contact"] = False
-    if "show_skills" not in st.session_state:
-        st.session_state["show_skills"] = False
-    if "show_resume" not in st.session_state:
-        st.session_state["show_resume"] = False
-
-    # Sidebar Title
+    # Sidebar Layout
     st.sidebar.markdown("<div class='sidebar-title'>Hello</div>", unsafe_allow_html=True)
     
     # Sidebar Items
-    if st.sidebar.button("📩 Contact"):
-        st.session_state["show_contact"] = not st.session_state["show_contact"]
-        st.session_state["show_skills"] = False  # Hide skills when contact is toggled
-        st.session_state["show_resume"] = False  # Hide resume when contact is toggled
-
-    if st.session_state["show_contact"]:
+    sidebar_items = [
+       if st.sidebar.button("📩 Contact"):
         st.sidebar.write("### LinkedIn")
         st.sidebar.markdown("""
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
@@ -102,26 +90,12 @@ def web_portfolio():
         </div>
         """, unsafe_allow_html=True)
 
-    if st.sidebar.button("📝 Skills"):
-        st.session_state["show_skills"] = not st.session_state["show_skills"]
-        st.session_state["show_contact"] = False  # Hide contact info when skills are toggled
-        st.session_state["show_resume"] = False  # Hide resume when skills are toggled
-
-    if st.session_state["show_skills"]:
-        st.sidebar.write("### Skills")
-        st.sidebar.write("- HTML")
-        st.sidebar.write("- CSS")
-        st.sidebar.write("- React JS")
-        st.sidebar.write("- Figma Design")
-
-    if st.sidebar.button("📑 Resume"):
-        st.session_state["show_resume"] = not st.session_state["show_resume"]
-        st.session_state["show_contact"] = False  # Hide contact info when resume is toggled
-        st.session_state["show_skills"] = False  # Hide skills when resume is toggled
-
-    if st.session_state["show_resume"]:
-        st.sidebar.write("### Resume")
-        st.sidebar.write("You can view or download my resume [here](https://example.com)")
+        ("📝", "Skills"),
+        ("📑", "Resume"),
+        ("🔔", "Notifications"),
+        ("⚙️", "Settings"),
+        ("↩️", "Log out")
+    ]
     
     for icon, name in sidebar_items:
         st.sidebar.markdown(f"""
@@ -293,3 +267,6 @@ def web_portfolio():
     
 if __name__ == "__main__":
     web_portfolio()
+
+
+i want that when the word ("📩 Contact") is clicked it will drop down my infos in the sidebar
