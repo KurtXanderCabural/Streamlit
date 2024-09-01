@@ -10,7 +10,7 @@ def web_portfolio():
     if "show_skills" not in st.session_state:
         st.session_state.show_skills = False
 
-    # Custom CSS to replicate the sidebar design
+    # Custom CSS to replicate the sidebar design and add moving icons
     st.markdown("""
     <style>
     /* Sidebar container */
@@ -50,6 +50,25 @@ def web_portfolio():
     /* Sidebar icons */
     .sidebar-icon {
         margin-right: 10px;
+    }
+    
+    /* Moving icons */
+    .moving-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        animation: move 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes move {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+        100% { transform: translateY(0); }
+    }
+    
+    /* Sidebar content */
+    .sidebar-content {
+        padding-left: 30px;
     }
     
     /* User section */
@@ -111,17 +130,17 @@ def web_portfolio():
                 st.session_state.show_skills = not st.session_state.show_skills
             if st.session_state.show_skills:
                 st.sidebar.markdown("""
-                <div style="padding-left: 30px;">
+                <div class='sidebar-content'>
                     <ul>
-                        <li>HTML</li>
-                        <li>React JS</li>
-                        <li>React TS</li>
-                        <li>Figma Design</li>
-                        <li>Java Programming</li>
-                        <li>CSS Web Development</li>
-                        <li>JavaScript Web Development</li>
-                        <li>MySQL Database</li>
-                        <li>Team Collaboration</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/732/732212.png" class="moving-icon" alt="HTML Icon">HTML</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/919/919827.png" class="moving-icon" alt="React JS Icon">React JS</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/919/919830.png" class="moving-icon" alt="React TS Icon">React TS</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/871/871210.png" class="moving-icon" alt="Figma Icon">Figma Design</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/226/226777.png" class="moving-icon" alt="Java Icon">Java Programming</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/919/919831.png" class="moving-icon" alt="CSS Icon">CSS Web Development</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/5968/5968242.png" class="moving-icon" alt="JavaScript Icon">JavaScript Web Development</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/2620/2620675.png" class="moving-icon" alt="MySQL Icon">MySQL Database</li>
+                        <li><img src="https://cdn-icons-png.flaticon.com/128/2922/2922501.png" class="moving-icon" alt="Team Collaboration Icon">Team Collaboration</li>
                     </ul>
                 </div>
                 """, unsafe_allow_html=True)
@@ -132,7 +151,6 @@ def web_portfolio():
                 <span>{name}</span>
             </div>
             """, unsafe_allow_html=True)
-
     # User Section
     st.sidebar.markdown("""
     <div class='user-section'>
