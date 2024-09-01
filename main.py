@@ -71,29 +71,69 @@ def web_portfolio():
     .user-info strong {
         display: block;
     }
+
+    /* Section styling */
+    .section-content {
+        display: none;
+    }
+
+    .section-content.show {
+        display: block;
+    }
+
+    .skills-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .skills-list li {
+        margin-bottom: 15px;
+    }
+
+    .moving-icon {
+        display: inline-block;
+        animation: move 2s ease-in-out infinite;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+    }
+
+    @keyframes move {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(10px); }
+        100% { transform: translateX(0); }
+    }
     </style>
     """, unsafe_allow_html=True)
 
     # Sidebar Layout
     st.sidebar.markdown("<div class='sidebar-title'>Reflex</div>", unsafe_allow_html=True)
-    
-    # Sidebar Items
+
+    # Sidebar Items with click event to show/hide sections
     sidebar_items = [
-        ("📩", "Contact"),
-        ("📝", "Skills"),
-        ("📑", "Resume"),
+        ("📩", "Contact", "contact"),
+        ("📝", "Skills", "skills"),
+        ("📑", "Resume", "resume"),
         ("🔔", "Notifications"),
         ("⚙️", "Settings"),
         ("↩️", "Log out")
     ]
     
-    for icon, name in sidebar_items:
-        st.sidebar.markdown(f"""
-        <div class='sidebar-item'>
-            <span class='sidebar-icon'>{icon}</span>
-            <span>{name}</span>
-        </div>
-        """, unsafe_allow_html=True)
+    for icon, name, section in sidebar_items:
+        if section:
+            st.sidebar.markdown(f"""
+            <div class='sidebar-item' onclick="document.getElementById('{section}').classList.toggle('show')">
+                <span class='sidebar-icon'>{icon}</span>
+                <span>{name}</span>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.sidebar.markdown(f"""
+            <div class='sidebar-item'>
+                <span class='sidebar-icon'>{icon}</span>
+                <span>{name}</span>
+            </div>
+            """, unsafe_allow_html=True)
 
     # User Section
     st.sidebar.markdown("""
@@ -106,7 +146,7 @@ def web_portfolio():
     </div>
     """, unsafe_allow_html=True)
 
-    # Page title with waving hand emoji animation
+    # Main content
     st.write("""
     <style>
     .waving-hand {
@@ -122,21 +162,21 @@ def web_portfolio():
         100% { transform: rotate(0deg); }
     }
 
-    @keyframes slowTilt {
-        0%, 100% { transform: rotate(0deg); }
-        50% { transform: rotate(5deg); }
-    }
-    
     .box {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    
+
     .box img {
         animation: slowTilt 2s ease-in-out infinite;
         max-width: 40%;
         height: auto;
+    }
+
+    @keyframes slowTilt {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(5deg); }
     }
     </style>
     <div class="title" style="text-align: center;">
