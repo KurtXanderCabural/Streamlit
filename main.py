@@ -161,7 +161,7 @@ def web_portfolio():
             if st.session_state.show_resume:
                 st.sidebar.markdown("""
                 <div class='sidebar-content'>
-                    <a href="https://drive.google.com/file/d/1gGJ1pB2cqr6bHoNTCtugTwGifrD_cj1e/view?usp=sharing" 
+                    <a href="https://drive.google.com/file/d/1nGTb7YxJgcEMqdfrKykPFwqU-KajT4d3/view?usp=sharing" 
                     target="_blank" class="sidebar-link">View My Resume</a>
                 </div>
                 """, unsafe_allow_html=True)
