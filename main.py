@@ -309,6 +309,7 @@ def web_portfolio():
     st.write(
     """
     - ► Studying Project Management, Data Analytics, and Application Development with Emerging Technologies
+    - ► GPA 4.1
     """
     )
 
