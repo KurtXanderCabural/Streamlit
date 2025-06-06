@@ -290,12 +290,12 @@ def web_portfolio():
     st.write("---")
 
     st.markdown("""
-    I am a 4th-year IT student with a strong passion for technology and collaborative projects. 
-    Throughout my academic journey, I have consistently worked with my classmates on various projects, 
-    gaining hands-on experience and honing my skills in web development and design. I specialize in HTML, React JS, 
-    and React TS, and have a keen eye for design, utilizing Figma to create intuitive and visually appealing user interfaces. 
-    My ability to work effectively in a team, combined with my technical expertise and design skills, positions me well to contribute to innovative 
-    and impactful projects. I am dedicated to continuous learning and excited to bring my skills and enthusiasm to new challenges in the IT field.
+    I am a passionate and driven IT graduate with practical experience in web development, UI/UX design, and collaborative software projects. 
+    Proficient in HTML, React.js, and TypeScript, I have developed responsive, user-centered applications while refining my design skills through Figma, 
+    translating ideas into functional and visually engaging interfaces. My background includes successful teamwork on academic and freelance projects, 
+    where I’ve demonstrated strong communication, adaptability, and problem-solving abilities. Eager to grow and contribute meaningfully, I am open to any role 
+    in the IT field—from front-end development to UI/UX design, QA, or technical support. I bring a proactive mindset, fast learning ability, and a commitment 
+    to delivering value in dynamic, tech-driven environments.
     """)
 
     # --- Educational Attainment ---
@@ -305,10 +305,11 @@ def web_portfolio():
 
     # --- SCHOOL 1
     st.write("📚", "**Cebu Institute of Technology University**")
-    st.write("Bachelor of Science in Information Technology | 2024 -2025")
+    st.write("Bachelor of Science in Information Technology | 2025")
     st.write(
     """
-    - ► Studying Project Management, Data Analytics, and Application Development with Emerging Technologies
+    - ► Specialized in Project Management, Data Analytics, and Application Development using Emerging Technologies—developing strong analytical, 
+        development, and problem-solving skills aligned with industry demands.
     - ► GPA 4.1
     """
     )
